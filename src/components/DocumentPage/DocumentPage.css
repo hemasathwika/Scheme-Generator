@@ -1,0 +1,189 @@
+/* =========================================================
+   DOCUMENT WRAPPER
+========================================================= */
+
+.document-wrapper {
+  width: 100%;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.document-actions {
+  width: 297mm;
+
+  margin: 20px auto;
+
+  display: flex;
+
+  justify-content: flex-end;
+}
+
+.download-button {
+  padding: 10px 20px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: #1d4ed8;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.download-button:hover {
+  background-color: #1e40af;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.document-page {
+  width: 297mm;
+
+  height: 210mm;
+
+  margin: 20px auto;
+
+  padding: 6mm;
+
+  background-color: #ffffff;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+}
+
+
+.document-content {
+  width: 100%;
+
+  height: 100%;
+}
+
+
+/* =========================================================
+   SEMESTER TITLE
+========================================================= */
+
+.semester-title {
+  width: 100%;
+
+  height: 7mm;
+
+  margin-top: 4mm;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border: 1px solid #000;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   PRINT / PDF
+========================================================= */
+
+@media print {
+
+  @page {
+    size: A4 landscape;
+
+    margin: 0;
+  }
+
+
+  /* Remove browser page background */
+
+  html,
+  body {
+    margin: 0;
+
+    padding: 0;
+
+    background: #ffffff;
+  }
+
+
+  /* Hide everything except document */
+
+  body * {
+    visibility: hidden;
+  }
+
+
+  .document-page,
+  .document-page * {
+    visibility: visible;
+  }
+
+
+  /* Position A4 page */
+
+  .document-page {
+    position: absolute;
+
+    left: 0;
+
+    top: 0;
+
+    width: 297mm;
+
+    height: 210mm;
+
+    margin: 0;
+
+    padding: 6mm;
+
+    box-shadow: none;
+
+    overflow: hidden;
+
+    background: #ffffff;
+  }
+
+
+  /* Hide Download button */
+
+  .document-actions {
+    display: none;
+  }
+}

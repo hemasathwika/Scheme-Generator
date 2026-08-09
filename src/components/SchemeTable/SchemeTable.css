@@ -1,0 +1,268 @@
+/* =========================================================
+   MAIN TABLE
+========================================================= */
+
+.scheme-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  margin: 0;
+
+  padding: 0;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 7px;
+
+  color: #000;
+
+  background: #fff;
+}
+
+
+/* =========================================================
+   COLUMN WIDTHS
+
+   Total = approximately 100%
+========================================================= */
+
+.col-sl {
+  width: 5.5%;
+}
+
+.col-course-type {
+  width: 7.2%;
+}
+
+.col-course-code {
+  width: 10.2%;
+}
+
+.col-course-title {
+  width: 22.5%;
+}
+
+.col-department {
+  width: 9.5%;
+}
+
+.col-psb {
+  width: 9.0%;
+}
+
+
+/* SLT */
+
+.col-slt {
+  width: 4.6%;
+}
+
+.col-slt-total {
+  width: 4.8%;
+}
+
+
+/* Assessment */
+
+.col-assessment {
+  width: 4.7%;
+}
+
+
+/* Credits */
+
+.col-credits {
+  width: 4.0%;
+}
+
+
+/* =========================================================
+   ALL TABLE CELLS
+========================================================= */
+
+.scheme-table th,
+.scheme-table td {
+  border: 1px solid #000;
+
+  padding: 2px 2px;
+
+  text-align: center;
+
+  vertical-align: middle;
+
+  line-height: 1.1;
+
+  word-wrap: break-word;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.scheme-table thead th {
+  background-color: #fff;
+
+  font-family: "Times New Roman", Times, serif;
+
+  font-weight: 1000;
+
+  text-align: center;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   FIRST HEADER ROW
+
+   Main grouped headings
+========================================================= */
+
+.scheme-header-row-1 {
+  height: 12mm;
+}
+
+.scheme-header-row-1 th {
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   SECOND HEADER ROW
+
+   Theory Lecture
+   Tutorial
+   Practical/Drawing
+   Self-Study
+   Total Hours
+   Duration
+   CIA
+   SEE
+   Total Marks
+========================================================= */
+
+.scheme-header-row-2 {
+  height: 18mm;
+}
+
+.scheme-header-row-2 th {
+  padding: 1px;
+
+  font-size: 7px;
+}
+
+
+/* =========================================================
+   VERTICAL TEXT
+
+   Matches the reference document
+========================================================= */
+
+.vertical-text {
+  writing-mode: vertical-rl;
+
+  transform: rotate(180deg);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin: auto;
+
+  height: 15mm;
+
+  white-space: normal;
+
+  text-align: center;
+
+  line-height: 1;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   THIRD HEADER ROW
+
+   L T P S TOT
+========================================================= */
+
+.scheme-header-row-3 {
+  height: 5mm;
+}
+
+.scheme-header-row-3 th {
+  font-size: 13px;
+
+  padding: 1px;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+.scheme-table tbody td {
+  height: 6mm;
+
+  min-height: 6mm;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  padding: 2px;
+}
+
+
+/* =========================================================
+   COURSE CODE
+========================================================= */
+
+.course-code {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   COURSE TITLE
+========================================================= */
+
+.course-title {
+  text-align: left !important;
+
+  padding-left: 5px !important;
+
+  font-size: 10px !important;
+
+  line-height: 1.15 !important;
+}
+
+
+/* =========================================================
+   TOTAL ROW
+========================================================= */
+
+.scheme-total-row {
+  height: 6mm;
+
+  font-weight: 500;
+}
+
+.scheme-total-row td {
+  font-size: 12px;
+}
+
+.scheme-total-label {
+  text-align: right !important;
+
+  padding-right: 8px !important;
+}

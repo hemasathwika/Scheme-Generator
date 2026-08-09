@@ -1,0 +1,243 @@
+/* .scheme-setup {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background-color: #f3f4f6;
+}
+
+.scheme-setup-card {
+  width: 420px;
+
+  padding: 35px;
+
+  background-color: #ffffff;
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.scheme-setup-card h1 {
+  margin-bottom: 8px;
+
+  text-align: center;
+
+  font-size: 26px;
+}
+
+.setup-description {
+  margin-bottom: 30px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+.form-group select {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  background-color: #ffffff;
+}
+
+.form-group select:focus {
+  outline: none;
+
+  border-color: #2563eb;
+}
+
+.scheme-setup-card button {
+  width: 100%;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: #1d4ed8;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.scheme-setup-card button:hover {
+  background-color: #1e40af;
+}
+
+.form-group input {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-group input:focus {
+  outline: none;
+
+  border-color: #2563eb;
+} */
+
+
+
+
+
+
+
+.scheme-setup {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 30px;
+
+  background-color: #f3f4f6;
+}
+
+.scheme-setup-card {
+  width: 500px;
+
+  padding: 35px;
+
+  background-color: #ffffff;
+
+  border-radius: 10px;
+
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.scheme-setup-card h1 {
+  margin-bottom: 8px;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #222;
+}
+
+.setup-description {
+  margin-bottom: 30px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+
+  padding: 11px 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  background-color: #ffffff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+
+  border-color: #2563eb;
+}
+
+.scheme-setup-card button {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background-color: #1d4ed8;
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.scheme-setup-card button:hover {
+  background-color: #1e40af;
+}

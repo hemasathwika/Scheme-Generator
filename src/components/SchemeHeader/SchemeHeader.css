@@ -1,0 +1,216 @@
+/* =========================================================
+   MAIN HEADER
+========================================================= */
+
+.scheme-header {
+  width: 100%;
+
+  height: 25mm;
+
+  display: grid;
+
+  /*
+    Three boxes:
+    LEFT   = 20%
+    CENTER = 60%
+    RIGHT  = 20%
+  */
+  grid-template-columns: 20% 60% 20%;
+
+  border: 1px solid #000;
+
+  background-color: #fff;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   COMMON BOX
+========================================================= */
+
+.header-box {
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  box-sizing: border-box;
+
+  border-right: 1px solid #000;
+}
+
+
+/* =========================================================
+   LEFT BOX
+========================================================= */
+
+.left-box {
+  padding: 3mm 5mm;
+}
+
+
+/* =========================================================
+   RIGHT BOX
+========================================================= */
+
+.right-box {
+  border-right: none;
+
+  padding: 3mm 5mm;
+}
+
+
+/* =========================================================
+   LOGOS
+========================================================= */
+
+.header-box img {
+  max-width: 90%;
+
+  max-height: 80%;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   CENTER BOX
+========================================================= */
+
+.center-box {
+   height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 1mm 5mm;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   PROGRAM TITLE
+========================================================= */
+
+.program-title {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  line-height: 1.15;
+
+  margin-bottom: 1mm;
+}
+
+
+/* =========================================================
+   DEPARTMENT
+========================================================= */
+
+.program-name {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  line-height: 1.15;
+
+  margin-bottom: 2mm;
+}
+
+
+/* =========================================================
+   SCHEME TITLE
+========================================================= */
+
+.scheme-title {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  line-height: 1.1;
+
+  margin-bottom: 1mm;
+}
+
+
+/* =========================================================
+   OBE
+========================================================= */
+
+.obe-title {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  text-align: center;
+
+  line-height: 1.1;
+}
+
+
+/* =========================================================
+   AND
+========================================================= */
+
+.and-title {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  text-align: center;
+
+  line-height: 1.1;
+
+  margin: 0.5mm 0;
+}
+
+
+/* =========================================================
+   CBCS
+========================================================= */
+
+.cbcs-title {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  text-align: center;
+
+  line-height: 1.1;
+}
