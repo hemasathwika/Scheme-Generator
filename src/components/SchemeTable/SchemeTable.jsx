@@ -122,7 +122,9 @@ function SchemeTable({ courses = [] }) {
 
 
           <th rowSpan="3">
-            Credits
+           <div className="vertical-text">
+             Credits
+           </div>
           </th>
 
         </tr>
@@ -175,7 +177,7 @@ function SchemeTable({ courses = [] }) {
 
           {/* ASSESSMENT - 4 columns */}
 
-          <th>
+          <th rowSpan="2">
             <div className="vertical-text">
               Duration in
               <br />
@@ -183,7 +185,7 @@ function SchemeTable({ courses = [] }) {
             </div>
           </th>
 
-          <th>
+          <th rowSpan="2">
             <div className="vertical-text">
               CIA
               <br />
@@ -191,7 +193,7 @@ function SchemeTable({ courses = [] }) {
             </div>
           </th>
 
-          <th>
+          <th rowSpan="2">
             <div className="vertical-text">
               SEE
               <br />
@@ -199,7 +201,7 @@ function SchemeTable({ courses = [] }) {
             </div>
           </th>
 
-          <th>
+          <th rowSpan="2">
             <div className="vertical-text">
               Total
               <br />
