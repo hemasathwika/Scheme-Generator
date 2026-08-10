@@ -129,7 +129,7 @@
 }
 
 .scheme-header-row-1 th {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 
@@ -185,7 +185,7 @@
 
   line-height: 1;
 
-  font-size: 13px;
+  font-size: 14px;
 }
 
 
@@ -200,7 +200,7 @@
 }
 
 .scheme-header-row-3 th {
-  font-size: 13px;
+  font-size: 14.5px;
 
   padding: 1px;
 }
@@ -211,15 +211,16 @@
 ========================================================= */
 
 .scheme-table tbody td {
-  height: 6mm;
+  height: 10mm;
 
-  min-height: 6mm;
+  min-height: 10mm;
 
   font-family: Arial, Helvetica, sans-serif;
 
-  font-size: 10px;
+  font-size: 13px;
 
   padding: 2px;
+  
 }
 
 
@@ -241,9 +242,11 @@
 
   padding-left: 5px !important;
 
-  font-size: 10px !important;
+  font-size: 13px !important;
 
   line-height: 1.15 !important;
+
+  font-weight: 540;
 }
 
 
@@ -258,7 +261,7 @@
 }
 
 .scheme-total-row td {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .scheme-total-label {
