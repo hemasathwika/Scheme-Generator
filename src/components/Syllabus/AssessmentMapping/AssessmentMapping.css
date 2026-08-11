@@ -1,0 +1,329 @@
+/* =========================================================
+   ASSESSMENT MAPPING PAGE
+========================================================= */
+
+.assessment-mapping-page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding: 40px 20px;
+
+  background: #f5f6f8;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.assessment-mapping-card {
+  width: 950px;
+
+  max-width: 100%;
+
+  padding: 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.assessment-mapping-card h2 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #222;
+}
+
+
+.assessment-description {
+  margin: 10px 0 25px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   WEIGHTAGE
+========================================================= */
+
+.assessment-weightage {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+
+.weightage-item {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 75px;
+
+  padding: 12px;
+
+  border: 1px solid #dbeafe;
+
+  border-radius: 7px;
+
+  background: #eff6ff;
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+
+.weightage-item span {
+  font-size: 13px;
+
+  color: #374151;
+
+  margin-bottom: 7px;
+}
+
+
+.weightage-item strong {
+  font-size: 18px;
+
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+.mapping-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #ddd;
+
+  border-radius: 6px;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.mapping-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+
+.mapping-table th,
+.mapping-table td {
+  border: 1px solid #ccc;
+
+  padding: 12px;
+
+  text-align: center;
+
+  font-size: 14px;
+}
+
+
+.mapping-table th {
+  background: #f3f4f6;
+
+  font-weight: 700;
+
+  color: #333;
+}
+
+
+.mapping-table .co-code {
+  font-weight: 700;
+
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+.mapping-table select {
+  width: 80px;
+
+  height: 36px;
+
+  padding: 0 8px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  font-size: 13px;
+
+  text-align: center;
+
+  cursor: pointer;
+}
+
+
+.mapping-table select:focus {
+  outline: none;
+
+  border-color: #1d4ed8;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(29, 78, 216, 0.1);
+}
+
+
+/* =========================================================
+   NOTE
+========================================================= */
+
+.mapping-note {
+  display: flex;
+
+  gap: 8px;
+
+  margin-top: 20px;
+
+  padding: 12px 15px;
+
+  border-radius: 6px;
+
+  background: #f9fafb;
+
+  color: #555;
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.assessment-actions {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+
+.back-button,
+.continue-button {
+  padding: 11px 22px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.back-button {
+  background: #6b7280;
+
+  color: #ffffff;
+}
+
+
+.back-button:hover {
+  background: #4b5563;
+}
+
+
+.continue-button {
+  background: #1d4ed8;
+
+  color: #ffffff;
+}
+
+
+.continue-button:hover {
+  background: #1e40af;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 750px) {
+
+  .assessment-mapping-card {
+    padding: 25px 20px;
+  }
+
+
+  .assessment-weightage {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .assessment-weightage {
+    grid-template-columns: 1fr;
+  }
+
+}

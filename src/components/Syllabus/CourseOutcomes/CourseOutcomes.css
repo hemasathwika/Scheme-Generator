@@ -1,0 +1,330 @@
+/* =========================================================
+   COURSE OUTCOMES PAGE
+========================================================= */
+
+.course-outcomes-page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding: 40px 20px;
+
+  background: #f5f6f8;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.course-outcomes-card {
+  width: 850px;
+
+  max-width: 100%;
+
+  padding: 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.course-outcomes-card h2 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #222;
+}
+
+
+.course-outcomes-description {
+  margin: 10px 0 30px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   OUTCOME ITEM
+========================================================= */
+
+.outcome-item {
+  margin-bottom: 25px;
+
+  padding: 22px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  background: #fafafa;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   OUTCOME HEADER
+========================================================= */
+
+.outcome-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
+
+
+.outcome-code {
+  font-size: 18px;
+
+  font-weight: 700;
+
+  color: #1d4ed8;
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.outcome-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+
+.outcome-field label {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+.outcome-field textarea,
+.outcome-field select {
+  width: 100%;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+
+  background: #fff;
+}
+
+
+.outcome-field textarea {
+  padding: 12px;
+
+  resize: vertical;
+
+  min-height: 90px;
+}
+
+
+.outcome-field select {
+  height: 42px;
+
+  padding: 0 12px;
+}
+
+
+.outcome-field textarea:focus,
+.outcome-field select:focus {
+  border-color: #1d4ed8;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(29, 78, 216, 0.1);
+}
+
+
+/* =========================================================
+   CL / PL
+========================================================= */
+
+.outcome-levels {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   ADD BUTTON
+========================================================= */
+
+.add-outcome-button {
+  width: 100%;
+
+  padding: 12px;
+
+  border: 2px dashed #1d4ed8;
+
+  border-radius: 6px;
+
+  background: #eff6ff;
+
+  color: #1d4ed8;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.add-outcome-button:hover {
+  background: #dbeafe;
+}
+
+
+/* =========================================================
+   REMOVE BUTTON
+========================================================= */
+
+.remove-outcome-button {
+  padding: 7px 12px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.remove-outcome-button:hover {
+  background: #fecaca;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.course-outcomes-actions {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+
+.back-button,
+.continue-button {
+  padding: 11px 22px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.back-button {
+  background: #6b7280;
+
+  color: #ffffff;
+}
+
+
+.back-button:hover {
+  background: #4b5563;
+}
+
+
+.continue-button {
+  background: #1d4ed8;
+
+  color: #ffffff;
+}
+
+
+.continue-button:hover {
+  background: #1e40af;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .course-outcomes-card {
+    padding: 25px 20px;
+  }
+
+  .outcome-levels {
+    grid-template-columns: 1fr;
+  }
+
+}
