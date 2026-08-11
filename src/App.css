@@ -7,3 +7,113 @@
 
   overflow-x: auto;
 }
+
+
+
+
+
+
+/* =========================================================
+   GENERATOR SELECTION
+========================================================= */
+
+.generator-selection {
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 40px;
+
+  background: #f5f6f8;
+
+  box-sizing: border-box;
+}
+
+
+.generator-selection h1 {
+  margin-bottom: 40px;
+
+  font-size: 32px;
+
+  color: #222;
+}
+
+
+/* =========================================================
+   GENERATOR CARDS
+========================================================= */
+
+.generator-cards {
+  display: flex;
+
+  gap: 30px;
+
+  justify-content: center;
+
+  align-items: stretch;
+}
+
+
+.generator-card {
+  width: 320px;
+
+  padding: 30px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+.generator-card h2 {
+  margin-bottom: 15px;
+
+  color: #333;
+}
+
+
+.generator-card p {
+  margin-bottom: 25px;
+
+  color: #666;
+
+  line-height: 1.5;
+}
+
+
+.generator-card button {
+  padding: 11px 18px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #1d4ed8;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.generator-card button:hover {
+  background: #1e40af;
+}
