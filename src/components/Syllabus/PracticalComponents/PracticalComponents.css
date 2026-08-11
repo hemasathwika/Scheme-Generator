@@ -1,0 +1,413 @@
+/* =========================================================
+   PRACTICAL PAGE
+========================================================= */
+
+.practical-page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding: 40px 20px;
+
+  background: #f5f6f8;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.practical-card {
+  width: 950px;
+
+  max-width: 100%;
+
+  padding: 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.practical-card h2 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #222;
+}
+
+
+.practical-description {
+  margin: 10px 0 30px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.practical-section {
+  margin-bottom: 35px;
+
+  padding: 25px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  background: #fafafa;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.section-heading {
+  display: flex;
+
+  align-items: center;
+
+  margin-bottom: 25px;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+
+.section-heading h3 {
+  margin: 0 0 5px;
+
+  font-size: 20px;
+
+  color: #1d4ed8;
+}
+
+
+.section-heading span {
+  font-size: 14px;
+
+  color: #666;
+}
+
+
+/* =========================================================
+   EXPERIMENT LIST
+========================================================= */
+
+.experiments-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+
+/* =========================================================
+   EXPERIMENT CARD
+========================================================= */
+
+.experiment-card {
+  padding: 22px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 7px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   EXPERIMENT HEADER
+========================================================= */
+
+.experiment-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+
+.experiment-header h4 {
+  margin: 0;
+
+  font-size: 17px;
+
+  color: #333;
+}
+
+
+/* =========================================================
+   FIELD
+========================================================= */
+
+.practical-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-bottom: 18px;
+}
+
+
+.practical-field label {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+.practical-field input,
+.practical-field select,
+.practical-field textarea {
+  width: 100%;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+
+.practical-field input,
+.practical-field select {
+  height: 42px;
+
+  padding: 0 12px;
+}
+
+
+.practical-field textarea {
+  padding: 12px;
+
+  resize: vertical;
+
+  min-height: 130px;
+
+  line-height: 1.5;
+}
+
+
+.practical-field input:focus,
+.practical-field select:focus,
+.practical-field textarea:focus {
+  border-color: #1d4ed8;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(29, 78, 216, 0.1);
+}
+
+
+/* =========================================================
+   CO / CL / PL
+========================================================= */
+
+.practical-level-fields {
+  display: grid;
+
+  grid-template-columns:
+    1fr 1fr 1fr;
+
+  gap: 18px;
+
+  margin-bottom: 5px;
+}
+
+
+/* =========================================================
+   REMOVE
+========================================================= */
+
+.remove-experiment-button {
+  padding: 7px 13px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.remove-experiment-button:hover {
+  background: #fecaca;
+}
+
+
+/* =========================================================
+   ADD EXPERIMENT
+========================================================= */
+
+.add-experiment-button {
+  width: 100%;
+
+  margin-top: 20px;
+
+  padding: 12px;
+
+  border: 2px dashed #1d4ed8;
+
+  border-radius: 6px;
+
+  background: #eff6ff;
+
+  color: #1d4ed8;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.add-experiment-button:hover {
+  background: #dbeafe;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.practical-actions {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+
+.back-button,
+.continue-button {
+  padding: 11px 22px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.back-button {
+  background: #6b7280;
+
+  color: #ffffff;
+}
+
+
+.back-button:hover {
+  background: #4b5563;
+}
+
+
+.continue-button {
+  background: #1d4ed8;
+
+  color: #ffffff;
+}
+
+
+.continue-button:hover {
+  background: #1e40af;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .practical-card {
+    padding: 25px 20px;
+  }
+
+
+  .practical-section {
+    padding: 20px;
+  }
+
+
+  .practical-level-fields {
+    grid-template-columns: 1fr;
+  }
+
+}

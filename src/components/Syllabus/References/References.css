@@ -1,0 +1,352 @@
+/* =========================================================
+   REFERENCES PAGE
+========================================================= */
+
+.references-page {
+  width: 100%;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  padding: 40px 20px;
+
+  background: #f5f6f8;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   MAIN CARD
+========================================================= */
+
+.references-card {
+  width: 950px;
+
+  max-width: 100%;
+
+  padding: 35px;
+
+  background: #ffffff;
+
+  border: 1px solid #ddd;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.08);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.references-card h2 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 26px;
+
+  color: #222;
+}
+
+
+.references-description {
+  margin: 10px 0 30px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   REFERENCE SECTION
+========================================================= */
+
+.reference-section {
+  margin-bottom: 30px;
+
+  padding: 25px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  background: #fafafa;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.reference-section-header {
+  padding-bottom: 15px;
+
+  margin-bottom: 20px;
+
+  border-bottom: 1px solid #ddd;
+}
+
+
+.reference-section-header h3 {
+  margin: 0 0 5px;
+
+  font-size: 19px;
+
+  color: #1d4ed8;
+}
+
+
+.reference-section-header p {
+  margin: 0;
+
+  font-size: 13px;
+
+  color: #666;
+}
+
+
+/* =========================================================
+   REFERENCES LIST
+========================================================= */
+
+.references-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   REFERENCE ITEM
+========================================================= */
+
+.reference-item {
+  display: grid;
+
+  grid-template-columns:
+    40px 1fr auto;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.reference-number {
+  width: 32px;
+
+  height: 32px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 50%;
+
+  background: #dbeafe;
+
+  color: #1d4ed8;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.reference-item input {
+  width: 100%;
+
+  height: 42px;
+
+  padding: 0 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+
+.reference-item input:focus {
+  border-color: #1d4ed8;
+
+  box-shadow:
+    0 0 0 2px
+    rgba(29, 78, 216, 0.1);
+}
+
+
+/* =========================================================
+   REMOVE
+========================================================= */
+
+.remove-reference-button {
+  padding: 8px 12px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: #fee2e2;
+
+  color: #dc2626;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.remove-reference-button:hover {
+  background: #fecaca;
+}
+
+
+/* =========================================================
+   ADD
+========================================================= */
+
+.add-reference-button {
+  width: 100%;
+
+  margin-top: 18px;
+
+  padding: 11px;
+
+  border: 2px dashed #1d4ed8;
+
+  border-radius: 6px;
+
+  background: #eff6ff;
+
+  color: #1d4ed8;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.add-reference-button:hover {
+  background: #dbeafe;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.references-actions {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 30px;
+}
+
+
+.back-button,
+.continue-button {
+  padding: 11px 22px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+.back-button {
+  background: #6b7280;
+
+  color: #ffffff;
+}
+
+
+.back-button:hover {
+  background: #4b5563;
+}
+
+
+.continue-button {
+  background: #1d4ed8;
+
+  color: #ffffff;
+}
+
+
+.continue-button:hover {
+  background: #1e40af;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .references-card {
+    padding: 25px 20px;
+  }
+
+
+  .reference-item {
+    grid-template-columns: 35px 1fr;
+  }
+
+
+  .remove-reference-button {
+    grid-column: 2;
+
+    justify-self: start;
+  }
+
+}
