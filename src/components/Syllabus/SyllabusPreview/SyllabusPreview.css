@@ -107,7 +107,7 @@
    HEADER
 ========================================================= */
 
-.syllabus-header {
+/* .syllabus-header {
   display: grid;
 
   grid-template-columns: 32mm 1fr;
@@ -179,7 +179,46 @@
   font-size: 9pt;
 
   font-weight: 600;
+} */
+/* =========================================================
+   SYLLABUS HEADER - LOGO ONLY
+========================================================= */
+
+.syllabus-header {
+  width: 100%;
+
+  height: 25mm;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+
+  margin-bottom: 2mm;
 }
+
+
+/* =========================================================
+   ATRIA LOGO
+========================================================= */
+
+.syllabus-logo {
+  width: 75mm;
+
+  height: auto;
+
+  object-fit: contain;
+
+  display: block;
+}
+
+
+
 
 
 /* =========================================================
@@ -213,7 +252,7 @@
 /* =========================================================
    COURSE INFORMATION TABLE
 ========================================================= */
-
+/* 
 .course-info-table,
 .co-table,
 .mapping-table {
@@ -254,14 +293,159 @@
 
 .course-info-table td {
   width: 30%;
+} */
+
+/* =========================================================
+   COURSE INFORMATION
+========================================================= */
+
+.course-information-section {
+  margin-top: 2mm;
+   margin-bottom: 0;
+  padding-bottom: 0;
 }
+
+
+.course-info-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  font-size: 10pt;
+
+  margin-bottom: 0;
+}
+
+
+/* All cells */
+
+.course-info-table th,
+.course-info-table td {
+
+  border: 1px solid #000;
+
+  padding: 2.2mm 2.5mm;
+
+  vertical-align: middle;
+
+  box-sizing: border-box;
+
+  line-height: 1.2;
+}
+
+
+/* Labels */
+
+.course-info-table th {
+
+  background: #ffffff;
+
+  font-weight: 700;
+
+  text-align: left;
+}
+
+
+/* Values */
+
+.course-info-table td {
+
+  font-weight: 400;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   COLUMN WIDTHS
+========================================================= */
+
+/*
+   4 columns:
+
+   Label 1
+   Value 1
+   Label 2
+   Value 2
+*/
+
+.course-info-table th:nth-child(1) {
+  width: 24%;
+}
+
+
+.course-info-table td:nth-child(2) {
+  width: 29%;
+}
+
+
+.course-info-table th:nth-child(3) {
+  width: 18%;
+}
+
+
+.course-info-table td:nth-child(4) {
+  width: 29%;
+}
+
+
+/* =========================================================
+   TITLE ROW
+========================================================= */
+
+.course-title-label {
+  white-space: nowrap;
+}
+
+
+.course-title-value {
+  font-weight: 400;
+}
+
+
+.semester-label {
+  white-space: nowrap;
+}
+
+
+.semester-value {
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   STUDENT LEARNING HOURS
+========================================================= */
+
+.course-info-table tr:nth-child(4) th,
+.course-info-table tr:nth-child(4) td {
+
+  min-height: 13mm;
+}
+
+
+/* =========================================================
+   EXAMINATION TYPE
+========================================================= */
+
+.course-info-table tr:last-child th {
+  width: 24%;
+}
+
+
+.course-info-table tr:last-child td {
+  text-align: left;
+}
+
 
 
 /* =========================================================
    TERMINOLOGY
 ========================================================= */
 
-.terminology-grid {
+/* .terminology-grid {
   display: grid;
 
   grid-template-columns:
@@ -282,9 +466,66 @@
 
 .terminology-grid div:nth-child(3n) {
   border-right: none;
+} */
+
+
+/* =========================================================
+   COURSE TERMINOLOGY
+========================================================= */
+/* =========================================================
+   COURSE TERMINOLOGY
+   Continuation of Course Information table
+========================================================= */
+
+.terminology-section {
+  width: 100%;
+  margin-top: -1px;
+  padding: 0;
 }
 
 
+.terminology-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  font-size: 9pt;
+
+  margin: 0;
+}
+
+
+.terminology-table td {
+  border: 1px solid #000;
+
+  padding: 2.5mm 1.5mm;
+
+  text-align: center;
+
+  vertical-align: middle;
+
+  white-space: normal;
+
+  line-height: 1.2;
+
+  box-sizing: border-box;
+}
+
+
+.terminology-table td:nth-child(1),
+.terminology-table td:nth-child(2),
+.terminology-table td:nth-child(3),
+.terminology-table td:nth-child(4) {
+  width: 15%;
+}
+
+
+.terminology-table td:nth-child(5),
+.terminology-table td:nth-child(6) {
+  width: 20%;
+}
 /* =========================================================
    COURSE OUTCOMES
 ========================================================= */

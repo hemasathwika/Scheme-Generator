@@ -153,7 +153,7 @@ function SyllabusPreview({ syllabusData, onEdit }) {
             HEADER
         ================================================= */}
 
-        <div className="syllabus-header">
+        {/* <div className="syllabus-header">
 
           <div className="syllabus-logo-box">
             <img
@@ -179,108 +179,178 @@ function SyllabusPreview({ syllabusData, onEdit }) {
 
           </div>
 
-        </div>
-
+        </div> */}
 
         {/* =================================================
-            COURSE INFORMATION
-        ================================================= */}
+    HEADER - LOGO ONLY
+================================================= */}
 
-        <section className="syllabus-section">
+<div className="syllabus-header">
 
-          <h2 className="section-title">
-            COURSE INFORMATION
-          </h2>
+  <img
+    className="syllabus-logo"
+    src="/assets/atria-logo.png"
+    alt="Atria Institute of Technology"
+  />
 
-
-          <table className="course-info-table">
-
-            <tbody>
-
-              <tr>
-                <th>Title of the Course</th>
-                <td>
-                  {course.title || "-"}
-                </td>
-
-                <th>Semester</th>
-                <td>
-                  {course.semester || "-"}
-                </td>
-              </tr>
+</div>
 
 
-              <tr>
-                <th>Course Code</th>
-                <td>
-                  {course.courseCode || "-"}
-                </td>
+ 
 
-                <th>Course Type</th>
-                <td>
-                  {course.courseType || "-"}
-                </td>
-              </tr>
+        {/* =================================================
+    COURSE INFORMATION
+================================================= */}
 
+<section className="syllabus-section course-information-section">
 
-              <tr>
-                <th>CIA Marks</th>
-                <td>
-                  {course.ciaMarks || "-"}
-                </td>
+  <table className="course-info-table">
 
-                <th>SEE Marks</th>
-                <td>
-                  {course.seeMarks || "-"}
-                </td>
-              </tr>
+    <tbody>
 
+      {/* ROW 1 - TITLE + SEMESTER */}
 
-              <tr>
-                <th>Student Learning Hours</th>
-                <td>
-                  {course.studentLearningHours || "-"}
-                </td>
+      <tr>
 
-                <th>Total Marks</th>
-                <td>
-                  {course.totalMarks || "-"}
-                </td>
-              </tr>
+        <th className="course-title-label">
+          Title of the Course:
+        </th>
+
+        <td className="course-title-value">
+          {course.courseTitle || "-"}
+        </td>
+
+        <th className="semester-label">
+          Semester:
+        </th>
+
+        <td className="semester-value">
+          {course.semester || "-"}
+        </td>
+
+      </tr>
 
 
-              <tr>
-                <th>Credits</th>
-                <td>
-                  {course.credits || "-"}
-                </td>
+      {/* ROW 2 - COURSE CODE + CIA */}
 
-                <th>Exam Hours</th>
-                <td>
-                  {course.examHours || "-"}
-                </td>
-              </tr>
+      <tr>
+
+        <th>
+          Course Code:
+        </th>
+
+        <td>
+          {course.courseCode || "-"}
+        </td>
+
+        <th>
+          CIA Marks
+        </th>
+
+        <td>
+          {course.ciaMarks || "-"}
+        </td>
+
+      </tr>
 
 
-              <tr>
-                <th>Examination Type (SEE)</th>
-                <td colSpan="3">
-                  {course.examinationType || "-"}
-                </td>
-              </tr>
+      {/* ROW 3 - COURSE TYPE + SEE */}
 
-            </tbody>
+      <tr>
 
-          </table>
+        <th>
+          Course Type:
+        </th>
 
-        </section>
+        <td>
+          {course.courseType || "-"}
+        </td>
+
+        <th>
+          SEE Marks
+        </th>
+
+        <td>
+          {course.seeMarks || "-"}
+        </td>
+
+      </tr>
+
+
+      {/* ROW 4 - SLT + TOTAL MARKS */}
+
+      <tr>
+
+        <th>
+          Student Learning Hours
+          <br />
+          (L:T:P:S)
+        </th>
+
+        <td>
+          {course.studentLearningHours || "-"}
+        </td>
+
+        <th>
+          Total Marks
+        </th>
+
+        <td>
+          {course.totalMarks || "-"}
+        </td>
+
+      </tr>
+
+
+      {/* ROW 5 - CREDITS + EXAM HOURS */}
+
+      <tr>
+
+        <th>
+          Credits
+        </th>
+
+        <td>
+          {course.credits || "-"}
+        </td>
+
+        <th>
+          Exam Hours
+        </th>
+
+        <td>
+          {course.examHours || "-"}
+        </td>
+
+      </tr>
+
+
+      {/* ROW 6 - EXAMINATION TYPE */}
+
+      <tr>
+
+        <th>
+          Examination Type (SEE)
+        </th>
+
+        <td colSpan="3">
+          {course.examinationType || "-"}
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>
 
 
         {/* =================================================
             ABBREVIATIONS
         ================================================= */}
 
-        <section className="syllabus-section">
+        {/* <section className="syllabus-section">
 
           <h2 className="section-title">
             COURSE TERMINOLOGY
@@ -315,7 +385,51 @@ function SyllabusPreview({ syllabusData, onEdit }) {
 
           </div>
 
-        </section>
+        </section> */}
+
+        {/* =================================================
+    COURSE TERMINOLOGY
+================================================= */}
+
+<section className="terminology-section">
+
+  <table className="terminology-table">
+
+    <tbody>
+
+      <tr>
+
+        <td>
+          <strong>L</strong> - Lecture
+        </td>
+
+        <td>
+          <strong>T</strong> - Tutorial
+        </td>
+
+        <td>
+          <strong>P</strong> - Practical
+        </td>
+
+        <td>
+          <strong>S</strong> - Self Study
+        </td>
+
+        <td>
+          <strong>CL</strong> - Cognitive Level
+        </td>
+
+        <td>
+          <strong>PL</strong> - Psychomotor Level
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</section>
 
 
         {/* =================================================
