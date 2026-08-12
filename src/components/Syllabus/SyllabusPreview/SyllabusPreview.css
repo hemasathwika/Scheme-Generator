@@ -481,6 +481,8 @@
   width: 100%;
   margin-top: -1px;
   padding: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 
@@ -494,6 +496,8 @@
   font-size: 9pt;
 
   margin: 0;
+  
+  margin-bottom: 0;
 }
 
 
@@ -526,49 +530,153 @@
 .terminology-table td:nth-child(6) {
   width: 20%;
 }
+
 /* =========================================================
-   COURSE OUTCOMES
+   COURSE OUTCOMES TABLE
+========================================================= */
+
+.co-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  margin-top: 0;
+
+  font-size: 10pt;
+
+  border: 1px solid #000;
+}
+
+
+/* =========================================================
+   ALL CELLS
+========================================================= */
+
+.co-table th,
+.co-table td {
+  border: 1px solid #000;
+
+  box-sizing: border-box;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   HEADER
 ========================================================= */
 
 .co-table th {
-  background: #f2f2f2;
-
-  text-align: center;
+  background: #ffffff;
 
   font-weight: 700;
-}
 
-
-.co-table th:first-child {
-  width: 12%;
-}
-
-
-.co-table th:nth-child(2) {
-  width: 64%;
-}
-
-
-.co-table th:nth-child(3),
-.co-table th:nth-child(4) {
-  width: 12%;
-}
-
-
-.co-table td {
   text-align: center;
-}
 
+  padding: 2mm 1.5mm;
 
-.co-table .text-left {
-  text-align: left;
+  line-height: 1.2;
 }
 
 
 /* =========================================================
-   ASSESSMENT MAPPING
+   COLUMN WIDTHS
 ========================================================= */
 
+/*
+   COs          → 12%
+   Description  → 63%
+   CL           → 12.5%
+   PL           → 12.5%
+*/
+
+.co-code-header,
+.co-code {
+  width: 12%;
+}
+
+
+.co-description-header,
+.co-description {
+  width: 63%;
+}
+
+
+.co-level-header,
+.co-level {
+  width: 12.5%;
+}
+
+
+/* =========================================================
+   LEVEL HEADINGS
+========================================================= */
+
+.co-level-header {
+  font-size: 9.5pt;
+
+  text-align: center;
+}
+
+
+.co-level-header span {
+  font-size: 9pt;
+
+  line-height: 1.15;
+}
+
+
+/* =========================================================
+   CO NUMBER
+========================================================= */
+
+.co-code {
+  text-align: center;
+
+  font-size: 10pt;
+
+  padding: 2.5mm 1mm;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   OUTCOME DESCRIPTION
+========================================================= */
+
+.co-description {
+  text-align: left;
+
+  padding: 2mm 2mm;
+
+  line-height: 1.25;
+
+  vertical-align: top;
+
+  word-wrap: break-word;
+
+  overflow-wrap: break-word;
+}
+
+
+/* =========================================================
+   CL / PL VALUES
+========================================================= */
+
+.co-level {
+  text-align: center;
+
+  padding: 2mm 1mm;
+
+  font-size: 10pt;
+}
+/* =========================================================
+   ASSESSMENT MAPPING
+========================================================= */
+/* 
 .mapping-table td,
 .mapping-table th {
   text-align: center;
@@ -606,65 +714,370 @@
   border-right: 1px solid #000;
 
   background: #f7f7f7;
+} */
+/* =========================================================
+   CO - ASSESSMENT MAPPING
+========================================================= */
+
+.assessment-mapping-section {
+  width: 100%;
+  margin-top: 0;
+  padding: 0;
 }
 
 
 /* =========================================================
-   MODULES
+   TABLE
 ========================================================= */
 
-.module-preview {
-  margin-bottom: 5mm;
+.assessment-mapping-table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  table-layout: fixed;
+
+  margin: 0;
+
+  font-size: 10pt;
 
   border: 1px solid #000;
-
-  page-break-inside: avoid;
 }
 
 
-.module-title {
-  padding: 2.5mm;
+/* =========================================================
+   ALL CELLS
+========================================================= */
 
-  background: #f2f2f2;
+.assessment-mapping-table th,
+.assessment-mapping-table td {
+  border: 1px solid #000;
 
-  border-bottom: 1px solid #000;
+  box-sizing: border-box;
+
+  text-align: center;
+
+  vertical-align: middle;
+
+  padding: 2mm 1.5mm;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.assessment-mapping-title {
+  font-size: 11pt;
 
   font-weight: 700;
 
-  font-size: 10.5pt;
+  height: 7mm;
+
+  padding: 1.5mm !important;
+
+  background: #ffffff;
 }
 
 
-.module-meta {
-  display: flex;
+/* =========================================================
+   COLUMN WIDTHS
+========================================================= */
 
-  gap: 15mm;
+/*
+   Course Outcomes       = 18%
+   CIE I                 = 15%
+   CIE II                = 15%
+   Assignment/Activities = 28%
+   Semester End Exam     = 24%
 
-  padding: 2mm 2.5mm;
+   Total = 100%
+*/
 
-  border-bottom: 1px solid #000;
+.assessment-co-header {
+  width: 18%;
 
-  font-size: 9pt;
+  font-weight: 700;
+
+  font-size: 10pt;
+}
+
+
+.assessment-cia-header {
+  width: 58%;
+
+  font-weight: 700;
+
+  text-align: center;
+}
+
+
+.assessment-see-header {
+  width: 24%;
+
+  font-weight: 700;
+
+  text-align: center;
+
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   CIE I
+========================================================= */
+
+.assessment-cie-header {
+  width: 15%;
+
+  white-space: nowrap;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   ASSIGNMENT / ACTIVITIES
+========================================================= */
+
+.assessment-assignment-header {
+  width: 28%;
+
+  white-space: normal;
+
+  word-break: normal;
+
+  overflow-wrap: break-word;
+
+  text-align: center;
+
+  line-height: 1.15;
+
+  padding-left: 2mm !important;
+
+  padding-right: 2mm !important;
+}
+
+
+/* =========================================================
+   PERCENTAGE ROW
+========================================================= */
+
+.assessment-mapping-table thead tr:last-child th {
+  font-weight: 700;
+
+  text-align: center;
+
+  height: 8mm;
+}
+
+
+/* =========================================================
+   DATA ROWS
+========================================================= */
+
+.assessment-mapping-table tbody td {
+  height: 7mm;
+
+  font-size: 10pt;
+}
+
+
+.assessment-co {
+  font-weight: 400;
+
+  text-align: left !important;
+
+  padding-left: 2mm !important;
+}
+
+
+/* =========================================================
+   COLUMN WIDTHS FOR ALL BODY CELLS
+========================================================= */
+
+.assessment-mapping-table th:nth-child(1),
+.assessment-mapping-table td:nth-child(1) {
+  width: 18%;
+}
+
+
+.assessment-mapping-table th:nth-child(2),
+.assessment-mapping-table td:nth-child(2) {
+  width: 15%;
+}
+
+
+.assessment-mapping-table th:nth-child(3),
+.assessment-mapping-table td:nth-child(3) {
+  width: 15%;
+}
+
+
+.assessment-mapping-table th:nth-child(4),
+.assessment-mapping-table td:nth-child(4) {
+  width: 28%;
+}
+
+
+.assessment-mapping-table th:nth-child(5),
+.assessment-mapping-table td:nth-child(5) {
+  width: 24%;
+}
+
+
+/* =========================================================
+   EMPTY MAPPING CELLS
+========================================================= */
+
+.assessment-mapping-table tbody td:empty {
+  min-height: 7mm;
+}
+
+/* =========================================================
+   MODULES
+========================================================= */
+/* =========================================================
+   COURSE CONTENTS
+========================================================= */
+
+.course-contents-section {
+  width: 100%;
+  margin-top: 0;
+  padding: 0;
+}
+
+
+/* =========================================================
+   MAIN COURSE CONTENTS TABLE
+========================================================= */
+
+.course-contents-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  margin: 0;
+  border: 1px solid #000;
+  font-size: 9.5pt;
+}
+
+
+/* =========================================================
+   ALL CELLS
+========================================================= */
+
+.course-contents-table th,
+.course-contents-table td {
+  border: 1px solid #000;
+  box-sizing: border-box;
+  vertical-align: middle;
+  padding: 2mm;
+  line-height: 1.25;
+}
+
+
+/* =========================================================
+   COURSE CONTENTS TITLE
+========================================================= */
+
+.course-contents-table thead th {
+  font-size: 11pt;
+  font-weight: 700;
+  text-align: left;
+  height: 7mm;
+  padding: 1.5mm 2mm;
+  background: #ffffff;
+}
+
+
+/* =========================================================
+   MODULE HEADER ROW
+========================================================= */
+
+.module-header-row td {
+  vertical-align: middle;
+}
+
+
+/* =========================================================
+   MODULE NAME
+========================================================= */
+
+.module-title-cell {
+  width: 60%;
+  font-weight: 700;
+  text-align: left;
+}
+
+
+/* =========================================================
+   CO COLUMN
+========================================================= */
+
+.module-co-cell {
+  width: 16%;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   CL / PL COLUMN
+========================================================= */
+
+.module-level-cell {
+  width: 24%;
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   MODULE CONTENT
+========================================================= */
+
+.module-content-row td {
+  text-align: left;
+  vertical-align: top;
+  padding: 3mm;
+  line-height: 1.35;
 }
 
 
 .module-content {
-  padding: 3mm;
-
+  width: 100%;
   white-space: pre-line;
-
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   text-align: justify;
 }
 
 
+/* =========================================================
+   TEXTBOOK REFERENCE
+========================================================= */
+
 .module-reference {
-  padding: 2.5mm;
-
-  border-top: 1px solid #000;
-
+  margin-top: 3mm;
   font-size: 9pt;
+  line-height: 1.3;
 }
 
+
+/* =========================================================
+   MODULE ROW SPACING
+========================================================= */
+
+.module-header-row {
+  page-break-inside: avoid;
+}
+
+
+.module-content-row {
+  page-break-inside: avoid;
+}
 
 /* =========================================================
    PRACTICAL COMPONENTS

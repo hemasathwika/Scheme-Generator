@@ -11,6 +11,74 @@ function SyllabusPreview({ syllabusData, onEdit }) {
   const practical = syllabusData?.practicalComponents || {};
   const references = syllabusData?.references || {};
 
+  // =====================================================
+// COURSE TYPE RULES
+// =====================================================
+
+const COURSE_TYPE_RULES = {
+  IPCC: {
+    assessmentMapping: true,
+    courseContents: true,
+    practicalComponents: true,
+  },
+
+  PCC: {
+    assessmentMapping: true,
+    courseContents: true,
+    practicalComponents: false,
+  },
+
+  PCCL: {
+    assessmentMapping: false,
+    courseContents: false,
+    practicalComponents: true,
+  },
+
+  PEC: {
+    assessmentMapping: true,
+    courseContents: true,
+    practicalComponents: false,
+  },
+
+  HSMC: {
+    assessmentMapping: true,
+    courseContents: true,
+    practicalComponents: false,
+  },
+
+  AEC: {
+    assessmentMapping: true,
+    courseContents: true,
+    practicalComponents: false,
+  },
+
+  ETC: {
+    assessmentMapping: true,
+    courseContents: true,
+    practicalComponents: false,
+  },
+
+  PROJ: {
+    assessmentMapping: false,
+    courseContents: false,
+    practicalComponents: false,
+  },
+
+  NCMC: {
+    assessmentMapping: false,
+    courseContents: false,
+    practicalComponents: false,
+  },
+};
+
+
+const courseRules =
+  COURSE_TYPE_RULES[course.courseType] || {
+    assessmentMapping: true,
+    courseContents: true,
+    practicalComponents: false,
+  };
+
     // =====================================================
   // DOWNLOAD PDF
   // =====================================================
@@ -149,37 +217,7 @@ function SyllabusPreview({ syllabusData, onEdit }) {
 
       <div className="syllabus-a4-page">
 
-        {/* =================================================
-            HEADER
-        ================================================= */}
-
-        {/* <div className="syllabus-header">
-
-          <div className="syllabus-logo-box">
-            <img
-              src="/assets/atria-logo.png"
-              alt="Atria Institute of Technology"
-            />
-          </div>
-
-
-          <div className="syllabus-header-title">
-
-            <div className="institution-name">
-              Atria Institute of Technology
-            </div>
-
-            <div className="document-title">
-              SYLLABUS
-            </div>
-
-            <div className="document-subtitle">
-              OUTCOME BASED EDUCATION (OBE)
-            </div>
-
-          </div>
-
-        </div> */}
+  
 
         {/* =================================================
     HEADER - LOGO ONLY
@@ -346,46 +384,7 @@ function SyllabusPreview({ syllabusData, onEdit }) {
 </section>
 
 
-        {/* =================================================
-            ABBREVIATIONS
-        ================================================= */}
-
-        {/* <section className="syllabus-section">
-
-          <h2 className="section-title">
-            COURSE TERMINOLOGY
-          </h2>
-
-
-          <div className="terminology-grid">
-
-            <div>
-              <strong>L</strong> - Lecture
-            </div>
-
-            <div>
-              <strong>T</strong> - Tutorial
-            </div>
-
-            <div>
-              <strong>P</strong> - Practical
-            </div>
-
-            <div>
-              <strong>S</strong> - Self Study
-            </div>
-
-            <div>
-              <strong>CL</strong> - Cognitive Level
-            </div>
-
-            <div>
-              <strong>PL</strong> - Psychomotor Level
-            </div>
-
-          </div>
-
-        </section> */}
+      
 
         {/* =================================================
     COURSE TERMINOLOGY
@@ -436,256 +435,301 @@ function SyllabusPreview({ syllabusData, onEdit }) {
             COURSE OUTCOMES
         ================================================= */}
 
-        <section className="syllabus-section">
-
-          <h2 className="section-title">
-            COURSE OUTCOMES
-          </h2>
 
 
-          <table className="co-table">
+        <table className="co-table">
 
-            <thead>
-              <tr>
-                <th>CO</th>
-                <th>
-                  Course Outcome: At the end of the course,
-                  the students will be able to
-                </th>
-                <th>CL</th>
-                <th>PL</th>
-              </tr>
-            </thead>
+  <thead>
 
+    <tr>
 
-            <tbody>
+      <th className="co-code-header">
+        COs
+      </th>
 
-              {outcomes.map(
-                (outcome, index) => (
+      <th className="co-description-header">
+        Course Outcome: At the end of the course,
+        the students will be able to
+      </th>
 
-                  <tr key={index}>
+      <th className="co-level-header">
+        CL
+        <br />
+        <span>(Highest Level)</span>
+      </th>
 
-                    <td>
-                      {outcome.code ||
-                        `CO${index + 1}`}
-                    </td>
+      <th className="co-level-header">
+        PL
+        <br />
+        <span>(Highest Level)</span>
+      </th>
 
-                    <td className="text-left">
-                      {outcome.description ||
-                        outcome.outcome ||
-                        "-"}
-                    </td>
+    </tr>
 
-                    <td>
-                      {outcome.cl || "-"}
-                    </td>
-
-                    <td>
-                      {outcome.pl || "-"}
-                    </td>
-
-                  </tr>
-
-                )
-              )}
-
-            </tbody>
-
-          </table>
-
-        </section>
+  </thead>
 
 
-        {/* =================================================
-            ASSESSMENT MAPPING
-        ================================================= */}
+  <tbody>
 
-        <section className="syllabus-section">
+    {outcomes.map(
+      (outcome, index) => (
 
-          <h2 className="section-title">
-            CO – ASSESSMENT MAPPING
-          </h2>
+        <tr key={index}>
+
+          <td className="co-code">
+            {outcome.code ||
+              `CO${index + 1}`}
+          </td>
 
 
-          <AssessmentMappingPreview
-            data={
-              syllabusData.assessmentMapping
-            }
-            outcomes={outcomes}
-          />
+          <td className="co-description">
+            {outcome.description ||
+              outcome.outcome ||
+              "-"}
+          </td>
 
-        </section>
+
+          <td className="co-level">
+            {outcome.cl || "-"}
+          </td>
+
+
+          <td className="co-level">
+            {outcome.pl || "-"}
+          </td>
+
+        </tr>
+
+      )
+    )}
+
+  </tbody>
+
+</table>
+
+
+      
+
 
 
         {/* =================================================
-            COURSE CONTENTS
-        ================================================= */}
+            CO - ASSESSMENT MAPPING
+            ================================================= */}
 
-        <section className="syllabus-section">
+{/* <section className="assessment-mapping-section">
 
-          <h2 className="section-title">
-            COURSE CONTENTS
-          </h2>
+  <AssessmentMappingPreview
+    data={
+      syllabusData.assessmentMapping
+    }
+    outcomes={outcomes}
+  />
+
+</section> */}
+
+{courseRules.assessmentMapping && (
+
+  <section className="assessment-mapping-section">
+
+    <AssessmentMappingPreview
+      data={
+        syllabusData.assessmentMapping
+      }
+      outcomes={outcomes}
+    />
+
+  </section>
+
+)}
 
 
-          {modules.map(
-            (module, index) => (
 
-              <div
-                className="module-preview"
-                key={index}
-              >
 
-                <div className="module-title">
-                  Module {module.moduleNumber ||
+    {/* =================================================
+          COURSE CONTENTS
+         ================================================= */}
+{courseRules.courseContents && (
+
+  <section className="course-contents-section">
+
+    <table className="course-contents-table">
+
+      <thead>
+
+        <tr>
+          <th colSpan="3">
+            Course Contents
+          </th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        {modules.map(
+          (module, index) => (
+
+            <>
+
+              <tr className="module-header-row">
+
+                <td className="module-title-cell">
+                  Module{" "}
+                  {module.moduleNumber ||
                     index + 1}
-                </div>
+                </td>
+
+                <td className="module-co-cell">
+                  <strong>CO:</strong>{" "}
+                  {module.co || "-"}
+                </td>
+
+                <td className="module-level-cell">
+
+                  <strong>CL:</strong>{" "}
+                  {module.cl || "-"}
+
+                  <br />
+
+                  <strong>PL:</strong>{" "}
+                  {module.pl || "-"}
+
+                </td>
+
+              </tr>
 
 
-                <div className="module-meta">
+              <tr className="module-content-row">
 
-                  <span>
-                    <strong>CO:</strong>{" "}
-                    {module.co || "-"}
-                  </span>
+                <td colSpan="3">
 
-                  <span>
-                    <strong>CL:</strong>{" "}
-                    {module.cl || "-"}
-                  </span>
-
-                  <span>
-                    <strong>PL:</strong>{" "}
-                    {module.pl || "-"}
-                  </span>
-
-                </div>
-
-
-                <div className="module-content">
-                  {module.content || "-"}
-                </div>
-
-
-                {module.textbookReference && (
-
-                  <div className="module-reference">
-
-                    <strong>
-                      Textbook Reference:
-                    </strong>{" "}
-                    {module.textbookReference}
-
+                  <div className="module-content">
+                    {module.content || "-"}
                   </div>
 
-                )}
 
-              </div>
+                  {module.textbookReference && (
 
-            )
-          )}
+                    <div className="module-reference">
 
-        </section>
+                      <strong>
+                        Textbook Reference:
+                      </strong>{" "}
 
+                      {module.textbookReference}
+
+                    </div>
+
+                  )}
+
+                </td>
+
+              </tr>
+
+            </>
+
+          )
+        )}
+
+      </tbody>
+
+    </table>
+
+  </section>
+
+)}
 
         {/* =================================================
             PRACTICAL COMPONENTS
         ================================================= */}
+{courseRules.practicalComponents &&
+  (practical.partA?.length > 0 ||
+   practical.partB?.length > 0) && (
 
-        {(practical.partA?.length > 0 ||
-          practical.partB?.length > 0) && (
+  <section className="syllabus-section">
 
-          <section className="syllabus-section">
+    <h2 className="section-title">
+      PRACTICAL COMPONENTS
+    </h2>
 
-            <h2 className="section-title">
-              PRACTICAL COMPONENTS
-            </h2>
+    {practical.partA?.length > 0 && (
 
+      <div className="practical-preview">
 
-            {practical.partA?.length > 0 && (
+        <h3>
+          PART – A: CONVENTIONAL EXPERIMENTS
+        </h3>
 
-              <div className="practical-preview">
+        {practical.partA.map(
+          (experiment, index) => (
 
-                <h3>
-                  PART – A: CONVENTIONAL EXPERIMENTS
-                </h3>
+            <div
+              className="experiment-preview"
+              key={index}
+            >
 
+              <strong>
+                {experiment.number ||
+                  index + 1}.{" "}
+                {experiment.title ||
+                  "Experiment"}
+              </strong>
 
-                {practical.partA.map(
-                  (experiment, index) => (
+              <p>
+                {experiment.description ||
+                  "-"}
+              </p>
 
-                    <div
-                      className="experiment-preview"
-                      key={index}
-                    >
+            </div>
 
-                      <strong>
-                        {experiment.number ||
-                          index + 1}.{" "}
-                        {experiment.title ||
-                          "Experiment"}
-                      </strong>
-
-
-                      <p>
-                        {experiment.description ||
-                          "-"}
-                      </p>
-
-                    </div>
-
-                  )
-                )}
-
-              </div>
-
-            )}
-
-
-            {practical.partB?.length > 0 && (
-
-              <div className="practical-preview">
-
-                <h3>
-                  PART – B: TYPICAL OPEN-ENDED
-                  EXPERIMENTS
-                </h3>
-
-
-                {practical.partB.map(
-                  (experiment, index) => (
-
-                    <div
-                      className="experiment-preview"
-                      key={index}
-                    >
-
-                      <strong>
-                        {experiment.number ||
-                          index + 1}.{" "}
-                        {experiment.title ||
-                          "Experiment"}
-                      </strong>
-
-
-                      <p>
-                        {experiment.description ||
-                          "-"}
-                      </p>
-
-                    </div>
-
-                  )
-                )}
-
-              </div>
-
-            )}
-
-          </section>
-
+          )
         )}
 
+      </div>
+
+    )}
+
+    {practical.partB?.length > 0 && (
+
+      <div className="practical-preview">
+
+        <h3>
+          PART – B: TYPICAL OPEN-ENDED
+          EXPERIMENTS
+        </h3>
+
+        {practical.partB.map(
+          (experiment, index) => (
+
+            <div
+              className="experiment-preview"
+              key={index}
+            >
+
+              <strong>
+                {experiment.number ||
+                  index + 1}.{" "}
+                {experiment.title ||
+                  "Experiment"}
+              </strong>
+
+              <p>
+                {experiment.description ||
+                  "-"}
+              </p>
+
+            </div>
+
+          )
+        )}
+
+      </div>
+
+    )}
+
+  </section>
+
+)}
 
         {/* =================================================
             LEARNING RESOURCES
@@ -733,91 +777,12 @@ function SyllabusPreview({ syllabusData, onEdit }) {
 }
 
 
+
+
+
 /* =========================================================
-   ASSESSMENT MAPPING
+   ASSESSMENT MAPPING PREVIEW
 ========================================================= */
-
-// function AssessmentMappingPreview({
-//   data,
-//   outcomes,
-// }) {
-
-//   if (!data) {
-//     return (
-//       <p className="empty-preview">
-//         No assessment mapping entered.
-//       </p>
-//     );
-//   }
-
-
-//   /*
-//     This safely displays the current mapping data
-//     while we finalize the exact mapping structure.
-//   */
-
-//   if (Array.isArray(data)) {
-
-//     return (
-//       <table className="mapping-table">
-
-//         <tbody>
-
-//           {data.map((row, index) => (
-
-//             <tr key={index}>
-
-//               {Object.values(row).map(
-//                 (value, valueIndex) => (
-
-//                   <td key={valueIndex}>
-//                     {String(value || "-")}
-//                   </td>
-
-//                 )
-//               )}
-
-//             </tr>
-
-//           ))}
-
-//         </tbody>
-
-//       </table>
-//     );
-//   }
-
-
-//   return (
-//     <div className="mapping-data">
-
-//       {Object.entries(data).map(
-//         ([key, value]) => (
-
-//           <div
-//             className="mapping-row"
-//             key={key}
-//           >
-
-//             <strong>
-//               {key}
-//             </strong>
-
-//             <span>
-//               {typeof value === "object"
-//                 ? JSON.stringify(value)
-//                 : String(value || "-")}
-//             </span>
-
-//           </div>
-
-//         )
-//       )}
-
-//     </div>
-//   );
-// }
-
 
 function AssessmentMappingPreview({
   data,
@@ -826,29 +791,25 @@ function AssessmentMappingPreview({
 
   if (!data) {
     return (
-      <p className="empty-preview">
-        No assessment mapping entered.
-      </p>
+      <div className="assessment-mapping-table">
+
+        <div className="assessment-mapping-title">
+          CO – Assessment Mapping
+        </div>
+
+        <div className="empty-preview">
+          No assessment mapping entered.
+        </div>
+
+      </div>
     );
   }
 
 
-  // =====================================================
-  // ASSESSMENT MAPPING TABLE
-  // =====================================================
+
 
   let mappingRows = [];
 
-
-  /*
-    The Assessment Mapping component currently stores
-    the mapping in an object where each CO contains:
-
-    cie1
-    cie2
-    assignment
-    see
-  */
 
   if (
     typeof data === "object" &&
@@ -857,27 +818,32 @@ function AssessmentMappingPreview({
 
     mappingRows = Object.entries(data).map(
       ([co, mapping]) => ({
+
         co,
-        cie1: mapping?.cie1 || "",
-        cie2: mapping?.cie2 || "",
+
+        cie1:
+          mapping?.cie1 || "",
+
+        cie2:
+          mapping?.cie2 || "",
+
         assignment:
           mapping?.assignment || "",
-        see: mapping?.see || "",
+
+        see:
+          mapping?.see || "",
+
       })
     );
 
   }
 
 
-  /*
-    If the data is already an array,
-    support that structure as well.
-  */
-
-  else if (Array.isArray(data)) {
+  if (Array.isArray(data)) {
 
     mappingRows = data.map(
       (mapping, index) => ({
+
         co:
           mapping?.co ||
           `CO${index + 1}`,
@@ -893,54 +859,126 @@ function AssessmentMappingPreview({
 
         see:
           mapping?.see || "",
+
       })
     );
 
   }
 
 
-  if (mappingRows.length === 0) {
-
-    return (
-      <p className="empty-preview">
-        No assessment mapping entered.
-      </p>
-    );
-
-  }
-
-
   return (
-    <table className="mapping-table">
 
-      <thead>
+    <table className="assessment-mapping-table">
 
-        <tr>
+  <thead>
 
-          <th>
-            CO
-          </th>
+  {/* =================================================
+      TITLE
+  ================================================= */}
 
-          <th>
-            CIE 1
-          </th>
+  <tr>
+    <th
+      colSpan="5"
+      className="assessment-mapping-title"
+    >
+      CO – Assessment Mapping
+    </th>
+  </tr>
 
-          <th>
-            CIE 2
-          </th>
 
-          <th>
-            Assignment
-          </th>
+  {/* =================================================
+      MAIN GROUP HEADER
+  ================================================= */}
 
-          <th>
-            SEE
-          </th>
+  <tr>
 
-        </tr>
+    {/* Course Outcomes spans all 3 header rows */}
 
-      </thead>
+    <th
+      rowSpan="3"
+      className="assessment-co-header"
+    >
+      Course
+      <br />
+      Outcomes
+    </th>
 
+
+    {/* CIA spans CIE I, CIE II and Assignment */}
+
+    <th
+      colSpan="3"
+      className="assessment-cia-header"
+    >
+      Continuous Internal Assessment
+    </th>
+
+
+    {/* SEE only spans the next 2 rows */}
+
+    <th
+      rowSpan="2"
+      className="assessment-see-header"
+    >
+      Semester End Exam
+    </th>
+
+  </tr>
+
+
+  {/* =================================================
+      ASSESSMENT TYPES
+  ================================================= */}
+
+  <tr>
+
+    <th className="assessment-cie-header">
+      CIE I
+    </th>
+
+    <th className="assessment-cie-header">
+      CIE II
+    </th>
+
+    <th className="assessment-assignment-header">
+      Assignment/
+Activities
+    
+    </th>
+
+  </tr>
+
+
+  {/* =================================================
+      PERCENTAGE
+  ================================================= */}
+
+  <tr>
+
+    <th>
+      15%
+    </th>
+
+    <th>
+      15%
+    </th>
+
+    <th>
+      20%
+    </th>
+
+    <th>
+      50%
+    </th>
+
+  </tr>
+
+</thead>
+
+
+      {/* =========================================
+          DATA
+      ========================================== */}
 
       <tbody>
 
@@ -949,24 +987,24 @@ function AssessmentMappingPreview({
 
             <tr key={index}>
 
-              <td>
+              <td className="assessment-co">
                 {row.co}
               </td>
 
               <td>
-                {row.cie1 || "—"}
+                {row.cie1 || ""}
               </td>
 
               <td>
-                {row.cie2 || "—"}
+                {row.cie2 || ""}
               </td>
 
               <td>
-                {row.assignment || "—"}
+                {row.assignment || ""}
               </td>
 
               <td>
-                {row.see || "—"}
+                {row.see || ""}
               </td>
 
             </tr>
@@ -977,9 +1015,9 @@ function AssessmentMappingPreview({
       </tbody>
 
     </table>
+
   );
 }
-
 /* =========================================================
    REFERENCES
 ========================================================= */
