@@ -17,9 +17,7 @@ function PracticalComponents({
     number,
     title: "",
     description: "",
-    co: "",
-    cl: "",
-    pl: "",
+   
   });
 
 
@@ -27,19 +25,30 @@ function PracticalComponents({
   // INITIAL DATA
   // =====================================================
 
-  const [partA, setPartA] = useState(
-    existingData?.partA?.length > 0
-      ? existingData.partA
-      : [createExperiment(1)]
-  );
+  // const [partA, setPartA] = useState(
+  //   existingData?.partA?.length > 0
+  //     ? existingData.partA
+  //     : [createExperiment(1)]
+  // );
 
 
-  const [partB, setPartB] = useState(
-    existingData?.partB?.length > 0
-      ? existingData.partB
-      : [createExperiment(1)]
-  );
+  // const [partB, setPartB] = useState(
+  //   existingData?.partB?.length > 0
+  //     ? existingData.partB
+  //     : [createExperiment(1)]
+  // );
+const [partA, setPartA] = useState(
+  existingData?.partA?.length > 0
+    ? existingData.partA
+    : []
+);
 
+
+const [partB, setPartB] = useState(
+  existingData?.partB?.length > 0
+    ? existingData.partB
+    : []
+);
 
   // =====================================================
   // UPDATE EXPERIMENT
@@ -260,7 +269,7 @@ function PracticalComponents({
         {/* ==========================================
             CO / CL / PL
         =========================================== */}
-
+{/* 
         <div className="practical-level-fields">
 
           <div className="practical-field">
@@ -353,7 +362,7 @@ function PracticalComponents({
 
           </div>
 
-        </div>
+        </div> */}
 
       </div>
     );

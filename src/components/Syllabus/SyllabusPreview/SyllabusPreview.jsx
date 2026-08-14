@@ -11,6 +11,21 @@ function SyllabusPreview({ syllabusData, onEdit }) {
   const practical = syllabusData?.practicalComponents || {};
   const references = syllabusData?.references || {};
 
+  const validPartA =
+  (practical.partA || []).filter(
+    (experiment) =>
+      experiment?.title?.trim() ||
+      experiment?.description?.trim()
+  );
+
+
+const validPartB =
+  (practical.partB || []).filter(
+    (experiment) =>
+      experiment?.title?.trim() ||
+      experiment?.description?.trim()
+  );
+
   // =====================================================
 // COURSE TYPE RULES
 // =====================================================
@@ -639,127 +654,445 @@ const courseRules =
 
 )}
 
-        {/* =================================================
-            PRACTICAL COMPONENTS
-        ================================================= */}
+
+
+{/* =================================================
+    PRACTICAL COMPONENTS
+================================================= */}
+
 {courseRules.practicalComponents &&
-  (practical.partA?.length > 0 ||
-   practical.partB?.length > 0) && (
+  (validPartA.length > 0 ||
+    validPartB.length > 0) && (
 
-  <section className="syllabus-section">
+    <section className="practical-components-section">
 
-    <h2 className="section-title">
-      PRACTICAL COMPONENTS
-    </h2>
+      {/* =================================================
+          PRACTICAL TITLE
+      ================================================= */}
 
-    {practical.partA?.length > 0 && (
+      <table className="practical-components-table">
+        <colgroup>
+    <col className="practical-number-column" />
+    <col className="practical-description-column" />
+  </colgroup>
 
-      <div className="practical-preview">
+        <thead>
 
-        <h3>
-          PART – A: CONVENTIONAL EXPERIMENTS
-        </h3>
+          <tr>
 
-        {practical.partA.map(
-          (experiment, index) => (
-
-            <div
-              className="experiment-preview"
-              key={index}
+            <th
+              colSpan="2"
+              className="practical-main-title"
             >
+              PRACTICAL COMPONENTS OF{" "}
+              {course.courseType || ""}
+            </th>
 
-              <strong>
-                {experiment.number ||
-                  index + 1}.{" "}
-                {experiment.title ||
-                  "Experiment"}
-              </strong>
+          </tr>
 
-              <p>
-                {experiment.description ||
-                  "-"}
-              </p>
+        </thead>
 
-            </div>
+
+        <tbody>
+
+          {/* ==========================================
+              PART A HEADING
+          =========================================== */}
+
+          {validPartA.length > 0 && (
+
+            <tr>
+
+              <th
+                colSpan="2"
+                className="practical-part-title"
+              >
+                PART – A: CONVENTIONAL EXPERIMENTS
+              </th>
+
+            </tr>
+
+          )}
+
+
+          {/* ==========================================
+              PART A EXPERIMENTS
+          =========================================== */}
+
+          {validPartA.map(
+            (experiment, index) => (
+
+              <tr
+                key={`partA-${index}`}
+                className="practical-experiment-row"
+              >
+
+                <td className="practical-number-cell">
+
+                  {experiment.number ||
+                    index + 1}.
+
+                </td>
+
+
+                <td className="practical-description-cell">
+
+                  {experiment.title && (
+
+                    <strong>
+                      {experiment.title}
+                    </strong>
+
+                  )}
+
+                  {experiment.description && (
+
+                    <div>
+                      {experiment.description}
+                    </div>
+
+                  )}
+
+                </td>
+
+              </tr>
+
+            )
+          )}
+
+
+          {/* ==========================================
+              PART B HEADING
+          =========================================== */}
+
+          {validPartB.length > 0 && (
+
+            <tr>
+
+              <th
+                colSpan="2"
+                className="practical-part-title"
+              >
+                PART – B: TYPICAL OPEN-ENDED EXPERIMENTS
+              </th>
+
+            </tr>
+
+          )}
+
+
+          {/* ==========================================
+              PART B EXPERIMENTS
+          =========================================== */}
+
+          {validPartB.map(
+            (experiment, index) => (
+
+              <tr
+                key={`partB-${index}`}
+                className="practical-experiment-row"
+              >
+
+                <td
+                  colSpan="2"
+                  className="practical-part-b-content"
+                >
+
+                  {/* {experiment.title && (
+
+                    <strong>
+                      {experiment.title}:
+                    </strong>
+
+                  )} */}
+
+                  {experiment.description && (
+
+                    <span>
+                      {" "}
+                      {experiment.description}
+                    </span>
+
+                  )}
+
+                </td>
+
+              </tr>
+
+            )
+          )}
+
+
+          {/* =================================================
+    TEXT BOOKS
+================================================= */}
+
+{references.textbooks?.length > 0 && (
+
+  <tr className="resource-section-row">
+
+    <td
+      colSpan="2"
+      className="resource-content-cell"
+    >
+
+      <div className="resource-title">
+        Text Books
+      </div>
+
+      <ol>
+        {references.textbooks.map(
+          (item, index) => (
+
+            <li key={index}>
+
+              {typeof item === "object"
+                ? item.title || "-"
+                : item}
+
+            </li>
 
           )
         )}
+      </ol>
 
-      </div>
+    </td>
 
-    )}
-
-    {practical.partB?.length > 0 && (
-
-      <div className="practical-preview">
-
-        <h3>
-          PART – B: TYPICAL OPEN-ENDED
-          EXPERIMENTS
-        </h3>
-
-        {practical.partB.map(
-          (experiment, index) => (
-
-            <div
-              className="experiment-preview"
-              key={index}
-            >
-
-              <strong>
-                {experiment.number ||
-                  index + 1}.{" "}
-                {experiment.title ||
-                  "Experiment"}
-              </strong>
-
-              <p>
-                {experiment.description ||
-                  "-"}
-              </p>
-
-            </div>
-
-          )
-        )}
-
-      </div>
-
-    )}
-
-  </section>
+  </tr>
 
 )}
 
-        {/* =================================================
-            LEARNING RESOURCES
-        ================================================= */}
 
-        <section className="syllabus-section">
+{/* =================================================
+    REFERENCE BOOKS
+================================================= */}
 
-          <h2 className="section-title">
-            SUGGESTED LEARNING RESOURCES
-          </h2>
+{references.referenceBooks?.length > 0 && (
+
+  <tr className="resource-section-row">
+
+    <td
+      colSpan="2"
+      className="resource-content-cell"
+    >
+
+      <div className="resource-title">
+        Reference Books
+      </div>
+
+      <ol>
+        {references.referenceBooks.map(
+          (item, index) => (
+
+            <li key={index}>
+
+              {typeof item === "object"
+                ? item.title || "-"
+                : item}
+
+            </li>
+
+          )
+        )}
+      </ol>
+
+    </td>
+
+  </tr>
+
+)}
 
 
-          <ReferenceList
-            title="Text Books"
-            items={references.textbooks}
-          />
+{/* =================================================
+    REFERENCE WEB LINKS
+================================================= */}
+
+{references.webLinks?.length > 0 && (
+
+  <tr className="resource-section-row">
+
+    <td
+      colSpan="2"
+      className="resource-content-cell"
+    >
+
+      <div className="resource-title">
+        Reference Web Links:
+      </div>
+
+      <ol>
+        {references.webLinks.map(
+          (item, index) => (
+
+            <li key={index}>
+
+              {typeof item === "object"
+                ? item.title || "-"
+                : item}
+
+            </li>
+
+          )
+        )}
+      </ol>
+
+    </td>
+
+  </tr>
+
+)}
+
+        </tbody>
+
+      </table>
+
+    </section>
+
+)}
+       {/* =================================================
+    LEARNING RESOURCES FOR NON-PRACTICAL COURSES
+================================================= */}
+
+{!courseRules.practicalComponents &&
+  (references.textbooks?.length > 0 ||
+    references.referenceBooks?.length > 0 ||
+    references.webLinks?.length > 0) && (
+
+    <table className="practical-components-table resources-only-table">
+
+      <tbody>
+
+        {/* ==========================================
+            TEXT BOOKS
+        =========================================== */}
+
+        {references.textbooks?.length > 0 && (
+
+          <tr className="resource-section-row">
+
+            <td
+              colSpan="2"
+              className="resource-content-cell"
+            >
+
+              <div className="resource-title">
+                Text Books
+              </div>
+
+              <ol>
+
+                {references.textbooks.map(
+                  (item, index) => (
+
+                    <li key={index}>
+
+                      {typeof item === "object"
+                        ? item.title || "-"
+                        : item}
+
+                    </li>
+
+                  )
+                )}
+
+              </ol>
+
+            </td>
+
+          </tr>
+
+        )}
 
 
-          <ReferenceList
-            title="Reference Books"
-            items={references.referenceBooks}
-          />
+        {/* ==========================================
+            REFERENCE BOOKS
+        =========================================== */}
+
+        {references.referenceBooks?.length > 0 && (
+
+          <tr className="resource-section-row">
+
+            <td
+              colSpan="2"
+              className="resource-content-cell"
+            >
+
+              <div className="resource-title">
+                Reference Books
+              </div>
+
+              <ol>
+
+                {references.referenceBooks.map(
+                  (item, index) => (
+
+                    <li key={index}>
+
+                      {typeof item === "object"
+                        ? item.title || "-"
+                        : item}
+
+                    </li>
+
+                  )
+                )}
+
+              </ol>
+
+            </td>
+
+          </tr>
+
+        )}
 
 
-          <ReferenceList
-            title="Reference Web Links"
-            items={references.webLinks}
-          />
+        {/* ==========================================
+            REFERENCE WEB LINKS
+        =========================================== */}
 
-        </section>
+        {references.webLinks?.length > 0 && (
+
+          <tr className="resource-section-row">
+
+            <td
+              colSpan="2"
+              className="resource-content-cell"
+            >
+
+              <div className="resource-title">
+                Reference Web Links:
+              </div>
+
+              <ol>
+
+                {references.webLinks.map(
+                  (item, index) => (
+
+                    <li key={index}>
+
+                      {typeof item === "object"
+                        ? item.title || "-"
+                        : item}
+
+                    </li>
+
+                  )
+                )}
+
+              </ol>
+
+            </td>
+
+          </tr>
+
+        )}
+
+      </tbody>
+
+    </table>
+
+)}
+ 
 
 
         {/* =================================================
