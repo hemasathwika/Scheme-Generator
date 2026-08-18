@@ -1,72 +1,4 @@
-
 // import { useState } from "react";
-
-// import SchemeSetup from "./components/SchemeSetup/SchemeSetup";
-// import CourseForm from "./components/CourseForm/CourseForm";
-// import DocumentPage from "./components/DocumentPage/DocumentPage";
-
-// import "./App.css";
-
-// function App() {
-//   const [schemeData, setSchemeData] = useState(null);
-
-//   const [courses, setCourses] = useState([]);
-
-//   // Receives data from Scheme Setup
-//   const handleSetupComplete = (data) => {
-//     console.log("Scheme setup data:", data);
-
-//     setSchemeData(data);
-//   };
-
-//   // Adds a new course
-//   const handleAddCourse = (course) => {
-//     setCourses((previousCourses) => [
-//       ...previousCourses,
-//       course,
-//     ]);
-//   };
-
-//   // Before scheme setup is completed
-//   if (!schemeData) {
-//     return (
-//       <SchemeSetup
-//         onContinue={handleSetupComplete}
-//       />
-//     );
-//   }
-
-//   return (
-//     <div className="app">
-
-//       {/* Course Entry Section */}
-//       <CourseForm
-//         onAddCourse={handleAddCourse}
-//       />
-
-//       {/* A4 Preview */}
-//       <DocumentPage
-//         schemeData={{
-//           ...schemeData,
-//           courses: courses,
-//         }}
-//       />
-
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-
-
-
-
-
-
-
-import { useState } from "react";
 
 import SchemeSetup from "./components/SchemeSetup/SchemeSetup";
 import CourseForm from "./components/CourseForm/CourseForm";
@@ -75,7 +7,7 @@ import DocumentPage from "./components/DocumentPage/DocumentPage";
 import SyllabusGenerator from "./components/Syllabus/SyllabusGenerator";
 
 import "./App.css";
-
+import { useEffect, useState } from "react";
 
 function App() {
 
@@ -83,8 +15,70 @@ function App() {
   // GENERATOR SELECTION
   // =====================================================
 
-  const [generator, setGenerator] = useState(null);
+  // const [generator, setGenerator] = useState(null);
+const [generator, setGenerator] = useState(() => {
+  const path = window.location.pathname;
 
+  if (path.startsWith("/syllabus")) {
+    return "syllabus";
+  }
+
+  if (path.startsWith("/scheme")) {
+    return "scheme";
+  }
+
+  return null;
+});
+
+// =====================================================
+// BROWSER HISTORY NAVIGATION
+// =====================================================
+
+useEffect(() => {
+
+  const handlePopState = () => {
+
+    const path = window.location.pathname;
+
+    if (path === "/" || path === "") {
+
+      setGenerator(null);
+      setSchemeData(null);
+      setCourses([]);
+
+      return;
+    }
+
+    if (path.startsWith("/syllabus")) {
+
+      setGenerator("syllabus");
+
+      return;
+    }
+
+    if (path.startsWith("/scheme")) {
+
+      setGenerator("scheme");
+
+    }
+
+  };
+
+  window.addEventListener(
+    "popstate",
+    handlePopState
+  );
+
+  return () => {
+
+    window.removeEventListener(
+      "popstate",
+      handlePopState
+    );
+
+  };
+
+}, []);
 
   // =====================================================
   // SCHEME DATA
@@ -131,497 +125,7 @@ const handleBackToHome = () => {
   };
 
 
-  // =====================================================
-  // GENERATOR SELECTION SCREEN
-  // =====================================================
 
-  //sathwika code
-  // if (!generator) {
-
-  //   return (
-  //     <div className="generator-selection">
-
-  //       <h1>
-  //         Atria Curriculum Generator
-  //       </h1>
-
-
-  //       <div className="generator-cards">
-
-  //         {/* ===============================
-  //             SCHEME
-  //         =============================== */}
-
-  //         <div className="generator-card">
-
-  //           <h2>
-  //             Scheme Generator
-  //           </h2>
-
-  //           <p>
-  //             Prepare Scheme of Teaching and Evaluation.
-  //           </p>
-
-  //           <button
-  //             onClick={() => setGenerator("scheme")}
-  //           >
-  //             Open Scheme Generator
-  //           </button>
-
-  //         </div>
-
-
-  //         {/* ===============================
-  //             SYLLABUS
-  //         =============================== */}
-
-  //         <div className="generator-card">
-
-  //           <h2>
-  //             Syllabus Generator
-  //           </h2>
-
-  //           <p>
-  //             Prepare course syllabus documents.
-  //           </p>
-
-  //           <button
-  //             onClick={() => setGenerator("syllabus")}
-  //           >
-  //             Open Syllabus Generator
-  //           </button>
-
-  //         </div>
-
-  //       </div>
-
-  //     </div>
-  //   );
-  // }
-
-  
-// if (!generator) {
-
-//   return (
-//     <div className="generator-selection">
-
-//       {/* =================================================
-//           HEADER
-//       ================================================= */}
-
-//       <header className="landing-header">
-
-//         <div className="landing-brand">
-
-//           <img
-//             src="/assets/atria-logo.png"
-//             alt="Atria Institute of Technology"
-//           />
-
-//           <div className="brand-text">
-
-//             <span className="brand-name">
-//               ATRIA INSTITUTE OF TECHNOLOGY
-//             </span>
-
-//             <span className="brand-location">
-//               Bengaluru
-//             </span>
-
-//           </div>
-
-//         </div>
-
-
-//         <div className="system-label">
-//           Academic Document Generation System
-//         </div>
-
-//       </header>
-
-
-//       {/* =================================================
-//           HERO SECTION
-//       ================================================= */}
-
-//       <main className="landing-main">
-
-//         <section className="hero-section">
-
-//           <div className="hero-badge">
-//             CURRICULUM MANAGEMENT SYSTEM
-//           </div>
-
-
-//           <h1>
-//             Atria Curriculum
-//             <span> Generator</span>
-//           </h1>
-
-
-//           <p className="hero-description">
-//             Create, manage and prepare structured academic
-//             curriculum documents with a consistent,
-//             professional institutional format.
-//           </p>
-
-
-//           <div className="hero-line"></div>
-
-//         </section>
-
-
-//         {/* =================================================
-//             FEATURES
-//         ================================================= */}
-
-//         <section className="feature-strip">
-
-//           <div className="feature-item">
-
-//             <div className="feature-number">
-//               01
-//             </div>
-
-//             <div>
-//               <h3>
-//                 Structured
-//               </h3>
-
-//               <p>
-//                 Organize academic information in a
-//                 standardized format.
-//               </p>
-//             </div>
-
-//           </div>
-
-
-//           <div className="feature-item">
-
-//             <div className="feature-number">
-//               02
-//             </div>
-
-//             <div>
-//               <h3>
-//                 Flexible
-//               </h3>
-
-//               <p>
-//                 Enter semester, course and assessment
-//                 information based on your requirements.
-//               </p>
-//             </div>
-
-//           </div>
-
-
-//           <div className="feature-item">
-
-//             <div className="feature-number">
-//               03
-//             </div>
-
-//             <div>
-//               <h3>
-//                 Print Ready
-//               </h3>
-
-//               <p>
-//                 Preview your document and generate a
-//                 professional A4 PDF.
-//               </p>
-//             </div>
-
-//           </div>
-
-//         </section>
-
-
-//         {/* =================================================
-//             GENERATOR SECTION
-//         ================================================= */}
-
-//         <section className="generator-section">
-
-//           <div className="section-heading">
-
-            
-
-//             <h2>
-//               What would you like to prepare?
-//             </h2>
-
-           
-
-//           </div>
-
-
-//           <div className="generator-cards">
-
-
-//             {/* =========================================
-//                 SCHEME CARD
-//             ========================================== */}
-
-//             <div className="generator-card scheme-card">
-
-//               <div className="card-top">
-
-//                 <div className="card-icon scheme-icon">
-//                   S
-//                 </div>
-
-//                 <span className="card-label">
-//                   MODULE 01
-//                 </span>
-
-//               </div>
-
-
-//               <h2>
-//                 Scheme Generator
-//               </h2>
-
-
-//               <p>
-//                 Prepare the Scheme of Teaching and
-//                 Evaluation with course details, student
-//                 learning hours, assessment information,
-//                 credits and semester-wise curriculum data.
-//               </p>
-
-
-//               <div className="card-features">
-
-//                 <span>
-//                   ✓ Semester based
-//                 </span>
-
-//                 <span>
-//                   ✓ Course management
-//                 </span>
-
-//                 <span>
-//                   ✓ A4 landscape preview
-//                 </span>
-
-//                 <span>
-//                   ✓ PDF ready
-//                 </span>
-
-//               </div>
-
-
-//               <button
-//                 onClick={() => setGenerator("scheme")}
-//               >
-//                 Open Scheme Generator
-//                 <span className="button-arrow">
-//                   →
-//                 </span>
-//               </button>
-
-//             </div>
-
-
-//             {/* =========================================
-//                 SYLLABUS CARD
-//             ========================================== */}
-
-//             <div className="generator-card syllabus-card">
-
-//               <div className="card-top">
-
-//                 <div className="card-icon syllabus-icon">
-//                   Y
-//                 </div>
-
-//                 <span className="card-label">
-//                   MODULE 02
-//                 </span>
-
-//               </div>
-
-
-//               <h2>
-//                 Syllabus Generator
-//               </h2>
-
-
-//               <p>
-//                 Prepare structured course syllabus
-//                 documents containing course information,
-//                 learning outcomes, modules, references
-//                 and other academic details.
-//               </p>
-
-
-//               <div className="card-features">
-
-//                 <span>
-//                   ✓ Course based
-//                 </span>
-
-//                 <span>
-//                   ✓ Structured content
-//                 </span>
-
-//                 <span>
-//                   ✓ Document preview
-//                 </span>
-
-//                 <span>
-//                   ✓ PDF ready
-//                 </span>
-
-//               </div>
-
-
-//               <button
-//                 onClick={() => setGenerator("syllabus")}
-//               >
-//                 Open Syllabus Generator
-//                 <span className="button-arrow">
-//                   →
-//                 </span>
-//               </button>
-
-//             </div>
-
-//           </div>
-
-//         </section>
-
-
-//         {/* =================================================
-//             HOW IT WORKS
-//         ================================================= */}
-
-//         <section className="workflow-section">
-          
-
-//           <div className="section-heading">
-
-            
-
-//             <h2>
-//               Prepare your document in a few steps
-//             </h2>
-
-//           </div>
-
-
-//           <div className="workflow">
-
-//             <div className="workflow-step">
-
-//               <div className="step-circle">
-//                 1
-//               </div>
-
-//               <h3>
-//                 Enter Details
-//               </h3>
-
-//               <p>
-//                 Provide the required academic
-//                 information.
-//               </p>
-
-//             </div>
-
-
-//             <div className="workflow-connector"></div>
-
-
-//             <div className="workflow-step">
-
-//               <div className="step-circle">
-//                 2
-//               </div>
-
-//               <h3>
-//                 Add Courses
-//               </h3>
-
-//               <p>
-//                 Enter course and assessment details.
-//               </p>
-
-//             </div>
-
-
-//             <div className="workflow-connector"></div>
-
-
-//             <div className="workflow-step">
-
-//               <div className="step-circle">
-//                 3
-//               </div>
-
-//               <h3>
-//                 Preview
-//               </h3>
-
-//               <p>
-//                 Review the formatted document.
-//               </p>
-
-//             </div>
-
-
-//             <div className="workflow-connector"></div>
-
-
-//             <div className="workflow-step">
-
-//               <div className="step-circle">
-//                 4
-//               </div>
-
-//               <h3>
-//                 Download
-//               </h3>
-
-//               <p>
-//                 Generate the final PDF document.
-//               </p>
-
-//             </div>
-
-//           </div>
-
-//         </section>
-
-//       </main>
-
-
-//       {/* =================================================
-//           FOOTER
-//       ================================================= */}
-
-//       <footer className="landing-footer">
-
-//         <div>
-//           Atria Institute of Technology
-//         </div>
-
-//         <div>
-//           Curriculum & Academic Document Generator
-//         </div>
-
-//         <div>
-//           2026
-//         </div>
-
-//       </footer>
-
-//     </div>
-//   );
-// }
 
 
 if (!generator) {
@@ -915,9 +419,22 @@ if (!generator) {
               </div>
 
 
-              <button
+              {/* <button
                 onClick={() => setGenerator("syllabus")}
-              >
+              > */}
+              <button
+  onClick={() => {
+
+    window.history.pushState(
+      {},
+      "",
+      "/syllabus"
+    );
+
+    setGenerator("syllabus");
+
+  }}
+>
                 Open Syllabus Generator
 
                 <span className="button-arrow">
@@ -1452,15 +969,7 @@ if (!generator) {
   // =====================================================
 
 
-  //sathwika code 
-  // if (!schemeData) {
 
-  //   return (
-  //     <SchemeSetup
-  //       onContinue={handleSetupComplete}
-  //     />
-  //   );
-  // }
 
 //pratyusha code 
 if (!schemeData) {
@@ -1488,28 +997,7 @@ if (!schemeData) {
   // =====================================================
 
 
-  //sathwika code 
-  // return (
-  //   <div className="app">
 
-  //     {/* Course Entry Section */}
-
-  //     <CourseForm
-  //       onAddCourse={handleAddCourse}
-  //     />
-
-
-  //     {/* A4 Preview */}
-
-  //     <DocumentPage
-  //       schemeData={{
-  //         ...schemeData,
-  //         courses: courses,
-  //       }}
-  //     />
-
-  //   </div>
-  // );
 
   //pratyusha code 
   return (
