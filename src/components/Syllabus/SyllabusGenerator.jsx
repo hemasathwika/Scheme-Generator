@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+// import { useState } from "react";
+import { useEffect, useState } from "react";
 import CourseInformation from "./CourseInformation/CourseInformation";
 import CourseOutcomes from "./CourseOutcomes/CourseOutcomes";
 import AssessmentMapping from "./AssessmentMapping/AssessmentMapping";
@@ -116,6 +116,126 @@ function SyllabusGenerator({ onBack }) {
   // =====================================================
 
   const [mode, setMode] = useState("edit");
+  // =====================================================
+// BROWSER HISTORY NAVIGATION
+// =====================================================
+
+const sectionPaths = {
+  courseInformation:
+    "/syllabus/course-information",
+
+  courseOutcomes:
+    "/syllabus/course-outcomes",
+
+  assessmentMapping:
+    "/syllabus/assessment-mapping",
+
+  modules:
+    "/syllabus/modules",
+
+  practicalComponents:
+    "/syllabus/practical-components",
+
+  references:
+    "/syllabus/references",
+
+  preview:
+    "/syllabus/preview",
+};
+
+
+// =====================================================
+// CHANGE SECTION + BROWSER URL
+// =====================================================
+
+const navigateToSection = (section) => {
+
+  const path =
+    sectionPaths[section];
+
+  if (!path) {
+    return;
+  }
+
+  window.history.pushState(
+    {},
+    "",
+    path
+  );
+
+  setCurrentSection(section);
+
+  setMode(
+    section === "preview"
+      ? "preview"
+      : "edit"
+  );
+};
+
+// =====================================================
+// HANDLE BROWSER BACK / FORWARD
+// =====================================================
+
+useEffect(() => {
+
+  const handlePopState = () => {
+
+    const currentPath =
+      window.location.pathname;
+
+    const matchedSection =
+      Object.entries(sectionPaths)
+        .find(
+          ([, path]) =>
+            path === currentPath
+        );
+
+    if (matchedSection) {
+
+      const section =
+        matchedSection[0];
+
+      setCurrentSection(section);
+
+      setMode(
+        section === "preview"
+          ? "preview"
+          : "edit"
+      );
+
+      return;
+    }
+
+    if (
+      currentPath === "/syllabus" ||
+      currentPath === "/"
+    ) {
+
+      setCurrentSection(
+        "courseInformation"
+      );
+
+      setMode("edit");
+
+    }
+
+  };
+
+  window.addEventListener(
+    "popstate",
+    handlePopState
+  );
+
+  return () => {
+
+    window.removeEventListener(
+      "popstate",
+      handlePopState
+    );
+
+  };
+
+}, []);
 
 
   // =====================================================
@@ -134,7 +254,8 @@ function SyllabusGenerator({ onBack }) {
       courseInformation: data,
     }));
 
-    setCurrentSection("courseOutcomes");
+    // setCurrentSection("courseOutcomes");
+    navigateToSection("courseOutcomes");
   };
 
 
@@ -166,23 +287,41 @@ const handleCourseOutcomesComplete = (data) => {
     COURSE_TYPE_RULES[courseType];
 
 
+  // if (rules?.assessmentMapping) {
+
+  //   setCurrentSection("assessmentMapping");
+
+  // } else if (rules?.courseContents) {
+
+  //   setCurrentSection("modules");
+
+  // } else if (rules?.practicalComponents) {
+
+  //   setCurrentSection("practicalComponents");
+
+  // } else {
+
+  //   setCurrentSection("references");
+
+  // }
+
   if (rules?.assessmentMapping) {
 
-    setCurrentSection("assessmentMapping");
+  navigateToSection("assessmentMapping");
 
-  } else if (rules?.courseContents) {
+} else if (rules?.courseContents) {
 
-    setCurrentSection("modules");
+  navigateToSection("modules");
 
-  } else if (rules?.practicalComponents) {
+} else if (rules?.practicalComponents) {
 
-    setCurrentSection("practicalComponents");
+  navigateToSection("practicalComponents");
 
-  } else {
+} else {
 
-    setCurrentSection("references");
+  navigateToSection("references");
 
-  }
+}
 };
 
   // =====================================================
@@ -213,19 +352,33 @@ const handleAssessmentMappingComplete = (data) => {
     COURSE_TYPE_RULES[courseType];
 
 
+  // if (rules?.courseContents) {
+
+  //   setCurrentSection("modules");
+
+  // } else if (rules?.practicalComponents) {
+
+  //   setCurrentSection("practicalComponents");
+
+  // } else {
+
+  //   setCurrentSection("references");
+
+  // }
+
   if (rules?.courseContents) {
 
-    setCurrentSection("modules");
+  navigateToSection("modules");
 
-  } else if (rules?.practicalComponents) {
+} else if (rules?.practicalComponents) {
 
-    setCurrentSection("practicalComponents");
+  navigateToSection("practicalComponents");
 
-  } else {
+} else {
 
-    setCurrentSection("references");
+  navigateToSection("references");
 
-  }
+}
 };
 
   // =====================================================
@@ -257,15 +410,25 @@ const handleAssessmentMappingComplete = (data) => {
     COURSE_TYPE_RULES[courseType];
 
 
+  // if (rules?.practicalComponents) {
+
+  //   setCurrentSection("practicalComponents");
+
+  // } else {
+
+  //   setCurrentSection("references");
+
+  // }
+
   if (rules?.practicalComponents) {
 
-    setCurrentSection("practicalComponents");
+  navigateToSection("practicalComponents");
 
-  } else {
+} else {
 
-    setCurrentSection("references");
+  navigateToSection("references");
 
-  }
+}
 };
 
 
@@ -280,7 +443,9 @@ const handleAssessmentMappingComplete = (data) => {
       practicalComponents: data,
     }));
 
-    setCurrentSection("references");
+    // setCurrentSection("references");
+
+    navigateToSection("references");
   };
 
 
@@ -295,7 +460,8 @@ const handleAssessmentMappingComplete = (data) => {
       references: data,
     }));
 
-    setMode("preview");
+    // setMode("preview");
+    navigateToSection("preview");
   };
 
 
@@ -390,11 +556,15 @@ const handleAssessmentMappingComplete = (data) => {
           syllabusData.courseOutcomes
         }
 
-        onBack={() =>
-          setCurrentSection(
-            "courseInformation"
-          )
-        }
+        // onBack={() =>
+        //   setCurrentSection(
+        //     "courseInformation"
+        //   )
+        // }
+
+        onBack={() => {
+  window.history.back();
+}}
 
         onContinue={
           handleCourseOutcomesComplete
@@ -420,11 +590,14 @@ const handleAssessmentMappingComplete = (data) => {
           syllabusData.assessmentMapping
         }
 
-        onBack={() =>
-          setCurrentSection(
-            "courseOutcomes"
-          )
-        }
+        // onBack={() =>
+        //   setCurrentSection(
+        //     "courseOutcomes"
+        //   )
+        // }
+        onBack={() => {
+  window.history.back();
+}}
 
         onContinue={
           handleAssessmentMappingComplete
@@ -450,11 +623,14 @@ const handleAssessmentMappingComplete = (data) => {
           syllabusData.modules
         }
 
-        onBack={() =>
-          setCurrentSection(
-            "assessmentMapping"
-          )
-        }
+        // onBack={() =>
+        //   setCurrentSection(
+        //     "assessmentMapping"
+        //   )
+        // }
+        onBack={() => {
+  window.history.back();
+}}
 
         onContinue={
           handleModulesComplete
@@ -479,25 +655,29 @@ const handleAssessmentMappingComplete = (data) => {
           syllabusData.practicalComponents
         }
 
-        onBack={() => {
+//         onBack={() => {
 
-  const courseType =
-    syllabusData.courseInformation?.courseType;
+//   const courseType =
+//     syllabusData.courseInformation?.courseType;
 
-  const rules =
-    COURSE_TYPE_RULES[courseType];
+//   const rules =
+//     COURSE_TYPE_RULES[courseType];
 
 
-  if (rules?.courseContents) {
+//   if (rules?.courseContents) {
 
-    setCurrentSection("modules");
+//     setCurrentSection("modules");
 
-  } else {
+//   } else {
 
-    setCurrentSection("courseOutcomes");
+//     setCurrentSection("courseOutcomes");
 
-  }
+//   }
 
+// }}
+
+onBack={() => {
+  window.history.back();
 }}
 
         onContinue={
@@ -525,41 +705,45 @@ const handleAssessmentMappingComplete = (data) => {
         //     "practicalComponents"
         //   )
         // }
-        onBack={() => {
+//         onBack={() => {
 
-  const courseType =
-    syllabusData.courseInformation?.courseType;
+//   const courseType =
+//     syllabusData.courseInformation?.courseType;
 
-  const rules =
-    COURSE_TYPE_RULES[courseType];
+//   const rules =
+//     COURSE_TYPE_RULES[courseType];
 
 
-  if (rules?.practicalComponents) {
+//   if (rules?.practicalComponents) {
 
-    setCurrentSection(
-      "practicalComponents"
-    );
+//     setCurrentSection(
+//       "practicalComponents"
+//     );
 
-  } else if (rules?.courseContents) {
+//   } else if (rules?.courseContents) {
 
-    setCurrentSection(
-      "modules"
-    );
+//     setCurrentSection(
+//       "modules"
+//     );
 
-  } else if (rules?.assessmentMapping) {
+//   } else if (rules?.assessmentMapping) {
 
-    setCurrentSection(
-      "assessmentMapping"
-    );
+//     setCurrentSection(
+//       "assessmentMapping"
+//     );
 
-  } else {
+//   } else {
 
-    setCurrentSection(
-      "courseOutcomes"
-    );
+//     setCurrentSection(
+//       "courseOutcomes"
+//     );
 
-  }
+//   }
 
+// }}
+
+onBack={() => {
+  window.history.back();
 }}
 
         onContinue={
