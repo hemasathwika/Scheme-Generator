@@ -4,7 +4,10 @@
 
 .syllabus-preview-container,
 .syllabus-preview-container * {
-  font-family: "Times New Roman", Times, serif;
+  font-family:
+    "Times New Roman",
+    Times,
+    serif;
 }
 
 
@@ -100,9 +103,9 @@
   color: #000000;
 
   font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+    "Times New Roman",
+    Times,
+    serif;
 
   font-size: 14pt;
 
@@ -113,9 +116,8 @@
 }
 
 
-
 /* =========================================================
-   SYLLABUS HEADER - LOGO ONLY
+   HEADER
 ========================================================= */
 
 .syllabus-header {
@@ -152,9 +154,6 @@
 }
 
 
-
-
-
 /* =========================================================
    SECTION
 ========================================================= */
@@ -165,6 +164,10 @@
   page-break-inside: auto;
 }
 
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
 
 .section-title {
   margin: 0 0 3mm;
@@ -183,15 +186,15 @@
 }
 
 
-
-
 /* =========================================================
    COURSE INFORMATION
 ========================================================= */
 
 .course-information-section {
   margin-top: 2mm;
-   margin-bottom: 0;
+
+  margin-bottom: 0;
+
   padding-bottom: 0;
 }
 
@@ -209,11 +212,8 @@
 }
 
 
-/* All cells */
-
 .course-info-table th,
 .course-info-table td {
-
   border: 1px solid #000;
 
   padding: 2.2mm 2.5mm;
@@ -226,10 +226,7 @@
 }
 
 
-/* Labels */
-
 .course-info-table th {
-
   background: #ffffff;
 
   font-weight: 700;
@@ -238,10 +235,7 @@
 }
 
 
-/* Values */
-
 .course-info-table td {
-
   font-weight: 400;
 
   text-align: left;
@@ -249,17 +243,8 @@
 
 
 /* =========================================================
-   COLUMN WIDTHS
+   COURSE INFORMATION COLUMN WIDTHS
 ========================================================= */
-
-/*
-   4 columns:
-
-   Label 1
-   Value 1
-   Label 2
-   Value 2
-*/
 
 .course-info-table th:nth-child(1) {
   width: 24%;
@@ -282,7 +267,7 @@
 
 
 /* =========================================================
-   TITLE ROW
+   TITLE / SEMESTER
 ========================================================= */
 
 .course-title-label {
@@ -311,7 +296,6 @@
 
 .course-info-table tr:nth-child(4) th,
 .course-info-table tr:nth-child(4) td {
-
   min-height: 13mm;
 }
 
@@ -330,20 +314,19 @@
 }
 
 
-
-
-
-
 /* =========================================================
    COURSE TERMINOLOGY
-   Continuation of Course Information table
 ========================================================= */
 
 .terminology-section {
   width: 100%;
+
   margin-top: -1px;
+
   padding: 0;
+
   margin-bottom: 0;
+
   padding-bottom: 0;
 }
 
@@ -358,7 +341,7 @@
   font-size: 12.5pt;
 
   margin: 0;
-  
+
   margin-bottom: 0;
 }
 
@@ -393,6 +376,7 @@
   width: 20%;
 }
 
+
 /* =========================================================
    COURSE OUTCOMES TABLE
 ========================================================= */
@@ -412,10 +396,6 @@
 }
 
 
-/* =========================================================
-   ALL CELLS
-========================================================= */
-
 .co-table th,
 .co-table td {
   border: 1px solid #000;
@@ -425,10 +405,6 @@
   vertical-align: middle;
 }
 
-
-/* =========================================================
-   HEADER
-========================================================= */
 
 .co-table th {
   background: #ffffff;
@@ -442,17 +418,6 @@
   line-height: 1.2;
 }
 
-
-/* =========================================================
-   COLUMN WIDTHS
-========================================================= */
-
-/*
-   COs          → 12%
-   Description  → 63%
-   CL           → 12.5%
-   PL           → 12.5%
-*/
 
 .co-code-header,
 .co-code {
@@ -472,10 +437,6 @@
 }
 
 
-/* =========================================================
-   LEVEL HEADINGS
-========================================================= */
-
 .co-level-header {
   font-size: 12.5pt;
 
@@ -490,10 +451,6 @@
 }
 
 
-/* =========================================================
-   CO NUMBER
-========================================================= */
-
 .co-code {
   text-align: center;
 
@@ -504,10 +461,6 @@
   white-space: nowrap;
 }
 
-
-/* =========================================================
-   OUTCOME DESCRIPTION
-========================================================= */
 
 .co-description {
   text-align: left;
@@ -524,10 +477,6 @@
 }
 
 
-/* =========================================================
-   CL / PL VALUES
-========================================================= */
-
 .co-level {
   text-align: center;
 
@@ -536,20 +485,19 @@
   font-size: 12.5pt;
 }
 
+
 /* =========================================================
-   CO - ASSESSMENT MAPPING
+   ASSESSMENT MAPPING
 ========================================================= */
 
 .assessment-mapping-section {
   width: 100%;
+
   margin-top: 0;
+
   padding: 0;
 }
 
-
-/* =========================================================
-   TABLE
-========================================================= */
 
 .assessment-mapping-table {
   width: 100%;
@@ -565,10 +513,6 @@
   border: 1px solid #000;
 }
 
-
-/* =========================================================
-   ALL CELLS
-========================================================= */
 
 .assessment-mapping-table th,
 .assessment-mapping-table td {
@@ -586,10 +530,6 @@
 }
 
 
-/* =========================================================
-   TITLE
-========================================================= */
-
 .assessment-mapping-title {
   font-size: 11pt;
 
@@ -602,20 +542,6 @@
   background: #ffffff;
 }
 
-
-/* =========================================================
-   COLUMN WIDTHS
-========================================================= */
-
-/*
-   Course Outcomes       = 18%
-   CIE I                 = 15%
-   CIE II                = 15%
-   Assignment/Activities = 28%
-   Semester End Exam     = 24%
-
-   Total = 100%
-*/
 
 .assessment-co-header {
   width: 18%;
@@ -646,10 +572,6 @@
 }
 
 
-/* =========================================================
-   CIE I
-========================================================= */
-
 .assessment-cie-header {
   width: 15%;
 
@@ -658,10 +580,6 @@
   text-align: center;
 }
 
-
-/* =========================================================
-   ASSIGNMENT / ACTIVITIES
-========================================================= */
 
 .assessment-assignment-header {
   width: 28%;
@@ -682,10 +600,6 @@
 }
 
 
-/* =========================================================
-   PERCENTAGE ROW
-========================================================= */
-
 .assessment-mapping-table thead tr:last-child th {
   font-weight: 700;
 
@@ -694,10 +608,6 @@
   height: 8mm;
 }
 
-
-/* =========================================================
-   DATA ROWS
-========================================================= */
 
 .assessment-mapping-table tbody td {
   height: 7mm;
@@ -714,10 +624,6 @@
   padding-left: 2mm !important;
 }
 
-
-/* =========================================================
-   COLUMN WIDTHS FOR ALL BODY CELLS
-========================================================= */
 
 .assessment-mapping-table th:nth-child(1),
 .assessment-mapping-table td:nth-child(1) {
@@ -749,156 +655,150 @@
 }
 
 
-/* =========================================================
-   EMPTY MAPPING CELLS
-========================================================= */
-
 .assessment-mapping-table tbody td:empty {
   min-height: 7mm;
 }
 
-/* =========================================================
-   MODULES
-========================================================= */
+
 /* =========================================================
    COURSE CONTENTS
 ========================================================= */
 
 .course-contents-section {
   width: 100%;
+
   margin-top: 0;
+
   padding: 0;
 }
 
 
-/* =========================================================
-   MAIN COURSE CONTENTS TABLE
-========================================================= */
-
 .course-contents-table {
   width: 100%;
+
   border-collapse: collapse;
+
   table-layout: fixed;
+
   margin: 0;
+
   border: 1px solid #000;
+
   font-size: 12.5pt;
 }
 
-
-/* =========================================================
-   ALL CELLS
-========================================================= */
 
 .course-contents-table th,
 .course-contents-table td {
   border: 1px solid #000;
+
   box-sizing: border-box;
+
   vertical-align: middle;
+
   padding: 2mm;
+
   line-height: 1.25;
 }
 
 
-/* =========================================================
-   COURSE CONTENTS TITLE
-========================================================= */
-
 .course-contents-table thead th {
   font-size: 12.5pt;
+
   font-weight: 700;
+
   text-align: left;
+
   height: 7mm;
+
   padding: 1.5mm 2mm;
+
   background: #ffffff;
 }
 
-
-/* =========================================================
-   MODULE HEADER ROW
-========================================================= */
 
 .module-header-row td {
   vertical-align: middle;
 }
 
 
-/* =========================================================
-   MODULE NAME
-========================================================= */
-
 .module-title-cell {
   width: 60%;
+
   font-weight: 700;
+
   text-align: left;
 }
 
 
-/* =========================================================
-   CO COLUMN
-========================================================= */
-
 .module-co-cell {
   width: 16%;
+
   text-align: center;
+
   white-space: nowrap;
 }
 
 
-/* =========================================================
-   CL / PL COLUMN
-========================================================= */
-
 .module-level-cell {
   width: 24%;
+
   text-align: center;
+
   line-height: 1.4;
 }
 
 
-/* =========================================================
-   MODULE CONTENT
-========================================================= */
-
 .module-content-row td {
   text-align: left;
+
   vertical-align: top;
+
   padding: 3mm;
+
   line-height: 1.35;
 }
 
 
 .module-content {
   width: 100%;
+
   white-space: pre-line;
+
   word-wrap: break-word;
+
   overflow-wrap: break-word;
+
   text-align: justify;
 }
 
 
-/* =========================================================
-   TEXTBOOK REFERENCE
-========================================================= */
-
 .module-reference {
   margin-top: 3mm;
+
   font-size: 12.5pt;
+
   line-height: 1.3;
 }
 
 
-/* =========================================================
-   MODULE ROW SPACING
-========================================================= */
-
 .module-header-row {
   page-break-inside: avoid;
+
+  break-inside: avoid;
+
+  page-break-after: avoid;
+
+  break-after: avoid;
 }
 
 
 .module-content-row {
-  page-break-inside: avoid;
+  page-break-inside: auto;
+
+  break-inside: auto;
 }
+
 
 /* =========================================================
    PRACTICAL COMPONENTS
@@ -926,6 +826,8 @@
   padding-left: 4mm;
 
   page-break-inside: avoid;
+
+  break-inside: avoid;
 }
 
 
@@ -952,8 +854,9 @@
   text-align: left;
 }
 
+
 /* =========================================================
-   PRACTICAL COMPONENTS TABLE
+   PRACTICAL TABLE
 ========================================================= */
 
 .practical-components-section {
@@ -964,6 +867,8 @@
   padding: 0;
 
   page-break-inside: auto;
+
+  break-inside: auto;
 }
 
 
@@ -981,10 +886,6 @@
   border: 1px solid #000;
 }
 
-
-/* =========================================================
-   MAIN TITLE
-========================================================= */
 
 .practical-main-title {
   height: 7mm;
@@ -1005,10 +906,6 @@
 }
 
 
-/* =========================================================
-   PART A / PART B HEADING
-========================================================= */
-
 .practical-part-title {
   padding: 2mm;
 
@@ -1026,18 +923,12 @@
 }
 
 
-/* =========================================================
-   EXPERIMENT ROW
-========================================================= */
-
 .practical-experiment-row {
   page-break-inside: avoid;
+
+  break-inside: avoid;
 }
 
-
-/* =========================================================
-   NUMBER COLUMN
-========================================================= */
 
 .practical-number-cell {
   width: 12%;
@@ -1055,10 +946,6 @@
   font-weight: 700;
 }
 
-
-/* =========================================================
-   DESCRIPTION COLUMN
-========================================================= */
 
 .practical-description-cell {
   width: 88%;
@@ -1084,10 +971,6 @@
 }
 
 
-/* =========================================================
-   PART B CONTENT
-========================================================= */
-
 .practical-part-b-content {
   padding: 2mm;
 
@@ -1108,24 +991,26 @@
 .practical-part-b-content strong {
   font-weight: 700;
 }
+
+
 .practical-number-column {
   width: 12%;
 }
+
 
 .practical-description-column {
   width: 88%;
 }
 
 
-
-
-
 /* =========================================================
-   LEARNING RESOURCES - TABLE CONTINUATION
+   LEARNING RESOURCES
 ========================================================= */
 
 .resource-section-row {
   page-break-inside: avoid;
+
+  break-inside: avoid;
 }
 
 
@@ -1144,10 +1029,6 @@
 }
 
 
-/* =========================================================
-   RESOURCE TITLE
-========================================================= */
-
 .resource-title {
   margin-bottom: 1mm;
 
@@ -1156,10 +1037,6 @@
   font-weight: 700;
 }
 
-
-/* =========================================================
-   RESOURCE LIST
-========================================================= */
 
 .resource-content-cell ol {
   margin: 0;
@@ -1175,13 +1052,13 @@
 
   word-break: break-word;
 }
-/* =========================================================
-   RESOURCES WITHOUT PRACTICAL COMPONENTS
-========================================================= */
+
 
 .resources-only-table {
   margin-top: 0;
 }
+
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1197,54 +1074,416 @@
 
   font-size: 12.5pt;
 }
-
-
 /* =========================================================
    PRINT / PDF
 ========================================================= */
 
 @page {
   size: A4 portrait;
-
   margin: 0;
 }
 
 
 @media print {
 
+  /* =====================================================
+     GLOBAL PRINT RESET
+  ===================================================== */
+
   html,
   body {
-    margin: 0;
+    margin: 0 !important;
+    padding: 0 !important;
 
-    padding: 0;
+    width: 210mm !important;
 
-    background: #ffffff;
+    min-width: 210mm !important;
+
+    background: #ffffff !important;
+
+    color: #000000 !important;
   }
 
 
-  .syllabus-preview-container {
-    padding: 0;
-
-    background: #ffffff;
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
+
+  /* =====================================================
+     HIDE EVERYTHING THAT SHOULD NOT BE PRINTED
+  ===================================================== */
 
   .syllabus-toolbar {
-    display: none;
+    display: none !important;
   }
 
+
+  /* =====================================================
+     PREVIEW CONTAINER
+  ===================================================== */
+
+  .syllabus-preview-container {
+
+    width: 210mm !important;
+
+    min-width: 210mm !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    background: #ffffff !important;
+
+    display: block !important;
+
+    min-height: 0 !important;
+
+    overflow: visible !important;
+  }
+
+
+  /* =====================================================
+     A4 PAGE
+  ===================================================== */
 
   .syllabus-a4-page {
-    width: 210mm;
 
-    min-height: 297mm;
+    width: 210mm !important;
 
-    margin: 0;
+    min-width: 210mm !important;
 
-    padding: 12mm;
+    height: auto !important;
 
-    box-shadow: none;
+    min-height: 297mm !important;
+
+    margin: 0 !important;
+
+    padding: 12mm !important;
+
+    box-sizing: border-box !important;
+
+    background: #ffffff !important;
+
+    color: #000000 !important;
+
+    box-shadow: none !important;
+
+    overflow: visible !important;
+
+    transform: none !important;
   }
+
+  /* =========================================================
+   PDF GENERATION
+========================================================= */
+
+.syllabus-a4-page {
+  background: #ffffff;
+  color: #000000;
+}
+
+
+/* Keep tables visible */
+
+.syllabus-a4-page table {
+  border-collapse: collapse;
+}
+
+
+/* PDF page-break support */
+
+.syllabus-a4-page .module-header-row {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.syllabus-a4-page .practical-experiment-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.syllabus-a4-page .resource-section-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+
+  /* =====================================================
+     LOGO
+  ===================================================== */
+
+  .syllabus-logo {
+
+    display: block !important;
+
+    width: 75mm !important;
+
+    max-width: 75mm !important;
+
+    height: auto !important;
+
+    object-fit: contain !important;
+  }
+
+
+  /* =====================================================
+     TABLES
+  ===================================================== */
+
+  table {
+
+    border-collapse: collapse !important;
+
+    width: 100% !important;
+  }
+
+
+  th,
+  td {
+
+    -webkit-print-color-adjust: exact !important;
+
+    print-color-adjust: exact !important;
+  }
+
+
+  /* =====================================================
+     TABLE HEADER REPEAT
+  ===================================================== */
+
+  thead {
+
+    display: table-header-group !important;
+  }
+
+
+  tfoot {
+
+    display: table-footer-group !important;
+  }
+
+
+  /* =====================================================
+     GENERAL PAGE BREAK BEHAVIOUR
+  ===================================================== */
+
+  tr {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  /* =====================================================
+     COURSE INFORMATION
+  ===================================================== */
+
+  .course-information-section {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  .course-info-table {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  .terminology-section {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  .terminology-table {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  /* =====================================================
+     COURSE OUTCOMES
+  ===================================================== */
+
+  .co-table {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  .co-table tr {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  /* =====================================================
+     ASSESSMENT MAPPING
+  ===================================================== */
+
+  .assessment-mapping-section {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  .assessment-mapping-table {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  .assessment-mapping-table tr {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  /* =====================================================
+     COURSE CONTENTS
+  ===================================================== */
+
+  .course-contents-section {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  .course-contents-table {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  /*
+     Keep module heading with its content
+  */
+
+  .module-header-row {
+
+    page-break-after: avoid !important;
+
+    break-after: avoid !important;
+  }
+
+
+  .module-content-row {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  /* =====================================================
+     PRACTICAL COMPONENTS
+  ===================================================== */
+
+  .practical-components-section {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  .practical-components-table {
+
+    page-break-inside: auto !important;
+
+    break-inside: auto !important;
+  }
+
+
+  .practical-experiment-row {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  /* =====================================================
+     RESOURCE SECTIONS
+  ===================================================== */
+
+  .resource-section-row {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  .resource-content-cell {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+
+  .syllabus-footer {
+
+    page-break-inside: avoid !important;
+
+    break-inside: avoid !important;
+  }
+
+
+  /* =====================================================
+     LINKS
+  ===================================================== */
+
+  a {
+
+    color: #000000 !important;
+
+    text-decoration: none !important;
+  }
+
+
+  /* =====================================================
+     IMAGES
+  ===================================================== */
+
+  img {
+
+    print-color-adjust: exact !important;
+
+    -webkit-print-color-adjust: exact !important;
+  }
+
 }
 
 
@@ -1255,16 +1494,129 @@
 @media screen and (max-width: 850px) {
 
   .syllabus-preview-container {
+
     padding: 10px;
 
     overflow-x: auto;
+
   }
 
 
   .syllabus-a4-page {
+
     margin: 0;
 
     transform-origin: top left;
+
   }
 
+}
+
+/* =========================================================
+   PDF PAGE FLOW
+========================================================= */
+
+/*
+   Keep the Course Contents heading together
+   with the first module.
+
+   This prevents:
+
+   PAGE 1
+   Course Contents
+
+   PAGE 2
+   Module 1
+*/
+
+.course-contents-section {
+  break-before: page;
+  page-break-before: always;
+
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+
+/*
+   Keep the Course Contents table header
+   with the first module row.
+*/
+
+.course-contents-table thead {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+
+/*
+   Do not allow a module header to be
+   separated from its content.
+*/
+
+.module-header-row {
+  break-after: avoid;
+  page-break-after: avoid;
+
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+
+/*
+   Keep the module content together when
+   it is short enough to fit on the page.
+*/
+
+.module-content-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+
+/*
+   Practical section should not begin with
+   only its title at the bottom of a page.
+*/
+
+.practical-components-section {
+  break-inside: auto;
+  page-break-inside: auto;
+}
+
+
+/*
+   Keep practical heading with the following
+   experiment whenever possible.
+*/
+
+.practical-main-title {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+
+.practical-part-title {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+
+/*
+   Keep each experiment together.
+*/
+
+.practical-experiment-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+
+/*
+   Keep learning-resource blocks together.
+*/
+
+.resource-section-row {
+  break-inside: avoid;
+  page-break-inside: avoid;
 }
