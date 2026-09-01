@@ -782,7 +782,7 @@
 }
 
 
-.module-header-row {
+/* .module-header-row {
   page-break-inside: avoid;
 
   break-inside: avoid;
@@ -790,7 +790,7 @@
   page-break-after: avoid;
 
   break-after: avoid;
-}
+} */
 
 
 .module-content-row {
@@ -1511,112 +1511,6 @@
   }
 
 }
-
 /* =========================================================
    PDF PAGE FLOW
 ========================================================= */
-
-/*
-   Keep the Course Contents heading together
-   with the first module.
-
-   This prevents:
-
-   PAGE 1
-   Course Contents
-
-   PAGE 2
-   Module 1
-*/
-
-.course-contents-section {
-  break-before: page;
-  page-break-before: always;
-
-  break-inside: auto;
-  page-break-inside: auto;
-}
-
-
-/*
-   Keep the Course Contents table header
-   with the first module row.
-*/
-
-.course-contents-table thead {
-  break-after: avoid;
-  page-break-after: avoid;
-}
-
-
-/*
-   Do not allow a module header to be
-   separated from its content.
-*/
-
-.module-header-row {
-  break-after: avoid;
-  page-break-after: avoid;
-
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-
-/*
-   Keep the module content together when
-   it is short enough to fit on the page.
-*/
-
-.module-content-row {
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-
-/*
-   Practical section should not begin with
-   only its title at the bottom of a page.
-*/
-
-.practical-components-section {
-  break-inside: auto;
-  page-break-inside: auto;
-}
-
-
-/*
-   Keep practical heading with the following
-   experiment whenever possible.
-*/
-
-.practical-main-title {
-  break-after: avoid;
-  page-break-after: avoid;
-}
-
-
-.practical-part-title {
-  break-after: avoid;
-  page-break-after: avoid;
-}
-
-
-/*
-   Keep each experiment together.
-*/
-
-.practical-experiment-row {
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
-
-
-/*
-   Keep learning-resource blocks together.
-*/
-
-.resource-section-row {
-  break-inside: avoid;
-  page-break-inside: avoid;
-}
