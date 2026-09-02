@@ -943,15 +943,7 @@ if (!generator) {
   // =====================================================
 
 
-  //sathwika code
-  // if (generator === "syllabus") {
-
-  //   return (
-  //     <SyllabusGenerator
-  //       onBack={() => setGenerator(null)}
-  //     />
-  //   );
-  // }
+  
 
 //pratyusha code
   if (generator === "syllabus") {

@@ -1,6 +1,6 @@
 
 import { Fragment } from "react";
-import html2pdf from "html2pdf.js";
+// import html2pdf from "html2pdf.js";
 import "./SyllabusPreview.css";
 
 // =====================================================
@@ -125,587 +125,68 @@ function SyllabusPreview({ syllabusData, onEdit }) {
 // =====================================================
 
 const handleDownloadPDF = async () => {
-  const source = document.querySelector(".syllabus-a4-page");
-
-  if (!source) {
-    alert("Syllabus preview not found.");
-    return;
-  }
-
-  let pdfWrapper = null;
-
   try {
-    // =================================================
-    // CREATE TEMPORARY PDF AREA
-    // =================================================
+    const syllabusElement =
+      document.getElementById("syllabus-document");
 
-    pdfWrapper = document.createElement("div");
-
-    pdfWrapper.style.position = "fixed";
-    pdfWrapper.style.left = "-100000px";
-    pdfWrapper.style.top = "0";
-    pdfWrapper.style.width = "210mm";
-    pdfWrapper.style.background = "#ffffff";
-    pdfWrapper.style.zIndex = "-9999";
-    pdfWrapper.style.visibility = "visible";
-
-    document.body.appendChild(pdfWrapper);
-
-
-    // =================================================
-    // CREATE HEADER
-    // =================================================
-
-    const header = source
-      .querySelector(".syllabus-header")
-      ?.cloneNode(true);
-
-
-    // =================================================
-    // CREATE FOOTER
-    // =================================================
-
-    const footer = source
-      .querySelector(".syllabus-footer")
-      ?.cloneNode(true);
-
-
-    // =================================================
-    // CREATE BODY
-    // =================================================
-
-    const body = document.createElement("div");
-
-    body.className = "pdf-body-content";
-
-
-    // Copy everything except header/footer/toolbar
-
-    Array.from(source.children).forEach((element) => {
-
-      if (
-        element.classList.contains("syllabus-header") ||
-        element.classList.contains("syllabus-footer") ||
-        element.classList.contains("syllabus-toolbar")
-      ) {
-        return;
-      }
-
-      body.appendChild(element.cloneNode(true));
-    });
-
-
-    // =================================================
-    // BODY STYLING
-    // =================================================
-
-    body.style.width = "210mm";
-    body.style.boxSizing = "border-box";
-    body.style.padding = "12mm";
-    body.style.margin = "0";
-    body.style.background = "#ffffff";
-    body.style.color = "#000000";
-    body.style.fontFamily = '"Times New Roman", Times, serif';
-    body.style.fontSize = "14pt";
-    body.style.lineHeight = "1.35";
-    body.style.overflow = "visible";
-
-
-    // =================================================
-    // HEADER STYLING
-    // =================================================
-
-    if (header) {
-
-      header.style.width = "210mm";
-      header.style.boxSizing = "border-box";
-      header.style.padding = "12mm 12mm 0 12mm";
-      header.style.margin = "0";
-      header.style.background = "#ffffff";
-      header.style.color = "#000000";
-      header.style.overflow = "visible";
+    if (!syllabusElement) {
+      alert("Syllabus document not found.");
+      return;
     }
 
-
-    // =================================================
-    // FOOTER STYLING
-    // =================================================
-
-    if (footer) {
-
-      footer.style.width = "210mm";
-      footer.style.boxSizing = "border-box";
-      footer.style.padding = "0 12mm 8mm 12mm";
-      footer.style.margin = "0";
-      footer.style.background = "#ffffff";
-      footer.style.color = "#000000";
-      footer.style.overflow = "visible";
-    }
-
-
-    // =================================================
-    // APPEND TEMPORARY ELEMENTS
-    // =================================================
-
-    if (header) {
-      pdfWrapper.appendChild(header);
-    }
-
-    pdfWrapper.appendChild(body);
-
-    if (footer) {
-      pdfWrapper.appendChild(footer);
-    }
-
-
-    // =================================================
-    // WAIT FOR RENDER
-    // =================================================
-
-    await new Promise((resolve) => {
-
-      requestAnimationFrame(() => {
-
-        requestAnimationFrame(resolve);
-
-      });
-
-    });
-
-
-    // =================================================
-    // WAIT FOR IMAGES
-    // =================================================
-
-    const images = Array.from(
-      pdfWrapper.querySelectorAll("img")
-    );
-
-
-    await Promise.all(
-
-      images.map((img) => {
-
-        if (img.complete) {
-          return Promise.resolve();
-        }
-
-        return new Promise((resolve) => {
-
-          img.onload = resolve;
-          img.onerror = resolve;
-
-        });
-
-      })
-
-    );
-
-
-    // =================================================
-    // IMPORT LIBRARIES
-    // =================================================
-
-    const html2canvasModule = await import(
-      "html2canvas"
-    );
-
-    const html2canvas =
-      html2canvasModule.default;
-
-
-    const jsPDFModule = await import(
-      "jspdf"
-    );
-
-    const { jsPDF } = jsPDFModule;
-
-
-    // =================================================
-    // A4 DIMENSIONS
-    // =================================================
-
-    const A4_WIDTH = 210;
-    const A4_HEIGHT = 297;
-
-
-    // =================================================
-    // RENDER HEADER
-    // =================================================
-
-    let headerCanvas = null;
-
-    if (header) {
-
-      headerCanvas = await html2canvas(
-        header,
-        {
-          scale: 2,
-
-          useCORS: true,
-
-          allowTaint: true,
-
-          backgroundColor: "#ffffff",
-
-          logging: false,
-
-          scrollX: 0,
-
-          scrollY: 0,
-
-          windowWidth: header.scrollWidth,
-
-          windowHeight: header.scrollHeight,
-        }
-      );
-
-    }
-
-
-    // =================================================
-    // RENDER FOOTER
-    // =================================================
-
-    let footerCanvas = null;
-
-    if (footer) {
-
-      footerCanvas = await html2canvas(
-        footer,
-        {
-          scale: 2,
-
-          useCORS: true,
-
-          allowTaint: true,
-
-          backgroundColor: "#ffffff",
-
-          logging: false,
-
-          scrollX: 0,
-
-          scrollY: 0,
-
-          windowWidth: footer.scrollWidth,
-
-          windowHeight: footer.scrollHeight,
-        }
-      );
-
-    }
-
-
-    // =================================================
-    // RENDER BODY
-    // =================================================
-
-    const bodyCanvas = await html2canvas(
-      body,
+    // Get the complete syllabus HTML
+    const html = syllabusElement.outerHTML;
+
+    // Send HTML to backend
+    const response = await fetch(
+      "http://localhost:5000/api/pdf/syllabus",
       {
-        scale: 2,
+        method: "POST",
 
-        useCORS: true,
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-        allowTaint: true,
-
-        backgroundColor: "#ffffff",
-
-        logging: false,
-
-        scrollX: 0,
-
-        scrollY: 0,
-
-        windowWidth: body.scrollWidth,
-
-        windowHeight: body.scrollHeight,
+        body: JSON.stringify({
+          html,
+        }),
       }
     );
 
-
-    // =================================================
-    // PIXEL / MM CONVERSION
-    // =================================================
-
-    const bodyWidthMM = A4_WIDTH - 24;
-
-    const pixelsPerMM =
-      bodyCanvas.width / bodyWidthMM;
-
-
-    // =================================================
-    // HEADER HEIGHT
-    // =================================================
-
-    const headerHeightMM =
-      headerCanvas
-        ? headerCanvas.height / pixelsPerMM
-        : 0;
-
-
-    // =================================================
-    // FOOTER HEIGHT
-    // =================================================
-
-    const footerHeightMM =
-      footerCanvas
-        ? footerCanvas.height / pixelsPerMM
-        : 0;
-
-
-    // =================================================
-    // AVAILABLE BODY HEIGHT
-    // =================================================
-
-    const topMarginMM = 12;
-
-    const bottomMarginMM = 8;
-
-    const availableBodyHeightMM =
-      A4_HEIGHT -
-      topMarginMM -
-      bottomMarginMM -
-      headerHeightMM -
-      footerHeightMM;
-
-
-    // =================================================
-    // BODY HEIGHT IN PIXELS
-    // =================================================
-
-    const bodyPageHeightPx =
-      Math.floor(
-        availableBodyHeightMM *
-        pixelsPerMM
+    if (!response.ok) {
+      throw new Error(
+        "Failed to generate PDF."
       );
-
-
-    // =================================================
-    // CREATE PDF
-    // =================================================
-
-    const pdf = new jsPDF({
-
-      unit: "mm",
-
-      format: "a4",
-
-      orientation: "portrait",
-
-      compress: true,
-
-    });
-
-
-    // =================================================
-    // SPLIT BODY INTO PAGES
-    // =================================================
-
-    let currentY = 0;
-
-    let pageNumber = 0;
-
-
-    while (
-      currentY <
-      bodyCanvas.height
-    ) {
-
-      if (pageNumber > 0) {
-
-        pdf.addPage();
-
-      }
-
-
-      // ===============================================
-      // DETERMINE CURRENT SLICE
-      // ===============================================
-
-      const remainingHeight =
-        bodyCanvas.height -
-        currentY;
-
-
-      const sliceHeight =
-        Math.min(
-          bodyPageHeightPx,
-          remainingHeight
-        );
-
-
-      // ===============================================
-      // CREATE PAGE SLICE
-      // ===============================================
-
-      const pageCanvas =
-        document.createElement("canvas");
-
-      pageCanvas.width =
-        bodyCanvas.width;
-
-      pageCanvas.height =
-        sliceHeight;
-
-
-      const context =
-        pageCanvas.getContext("2d");
-
-
-      context.fillStyle =
-        "#ffffff";
-
-      context.fillRect(
-        0,
-        0,
-        pageCanvas.width,
-        pageCanvas.height
-      );
-
-
-      context.drawImage(
-
-        bodyCanvas,
-
-        0,
-        currentY,
-
-        bodyCanvas.width,
-        sliceHeight,
-
-        0,
-        0,
-
-        pageCanvas.width,
-        pageCanvas.height
-
-      );
-
-
-      // ===============================================
-      // ADD HEADER
-      // ===============================================
-
-      if (headerCanvas) {
-
-        const headerWidthMM =
-          A4_WIDTH - 24;
-
-        const headerHeight =
-          headerHeightMM;
-
-
-        pdf.addImage(
-
-          headerCanvas,
-
-          "PNG",
-
-          12,
-
-          0,
-
-          headerWidthMM,
-
-          headerHeight
-
-        );
-
-      }
-
-
-      // ===============================================
-      // ADD BODY
-      // ===============================================
-
-      const bodyWidthMMForPDF =
-        A4_WIDTH - 24;
-
-
-      const sliceHeightMM =
-        sliceHeight /
-        pixelsPerMM;
-
-
-      pdf.addImage(
-
-        pageCanvas,
-
-        "PNG",
-
-        12,
-
-        topMarginMM +
-          headerHeightMM,
-
-        bodyWidthMMForPDF,
-
-        sliceHeightMM
-
-      );
-
-
-      // ===============================================
-      // ADD FOOTER
-      // ===============================================
-
-      if (footerCanvas) {
-
-        const footerWidthMM =
-          A4_WIDTH - 24;
-
-
-        pdf.addImage(
-
-          footerCanvas,
-
-          "PNG",
-
-          12,
-
-          A4_HEIGHT -
-            bottomMarginMM -
-            footerHeightMM,
-
-          footerWidthMM,
-
-          footerHeightMM
-
-        );
-
-      }
-
-
-      // ===============================================
-      // NEXT BODY POSITION
-      // ===============================================
-
-      currentY += sliceHeight;
-
-      pageNumber++;
-
     }
 
+    // Convert response into PDF blob
+    const blob = await response.blob();
 
-    // =================================================
-    // FILE NAME
-    // =================================================
+    // Create temporary download URL
+    const url =
+      window.URL.createObjectURL(blob);
+
+    // Create download link
+    const link =
+      document.createElement("a");
+
+    link.href = url;
 
     const courseCode =
       course?.courseCode?.trim() ||
       "Syllabus";
 
+    link.download =
+      `Syllabus-${courseCode}.pdf`;
 
-    // =================================================
-    // SAVE PDF
-    // =================================================
+    document.body.appendChild(link);
 
-    pdf.save(
-      `Syllabus-${courseCode}.pdf`
-    );
+    link.click();
 
+    link.remove();
+
+    // Clean up
+    window.URL.revokeObjectURL(url);
 
   } catch (error) {
 
@@ -714,23 +195,9 @@ const handleDownloadPDF = async () => {
       error
     );
 
-
     alert(
       "PDF generation failed. Please check the browser console."
     );
-
-  } finally {
-
-    // =================================================
-    // REMOVE TEMPORARY DOM
-    // =================================================
-
-    if (pdfWrapper) {
-
-      pdfWrapper.remove();
-
-    }
-
   }
 };
 
@@ -773,7 +240,7 @@ const handleDownloadPDF = async () => {
           A4 PAGE
       ================================================= */}
 
-      <div className="syllabus-a4-page">
+      <div className="syllabus-a4-page" id = "syllabus-document">
 
 
         {/* =================================================
